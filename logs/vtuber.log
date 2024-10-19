@@ -1,0 +1,2307 @@
+2024-10-19 18:49:42 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 7116 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 18:49:42 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 18:49:43 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 18:49:43 - Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
+2024-10-19 18:49:44 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 18:49:44 - Starting service [Tomcat]
+2024-10-19 18:49:44 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 18:49:44 - Initializing Spring embedded WebApplicationContext
+2024-10-19 18:49:44 - Root WebApplicationContext: initialization completed in 1302 ms
+2024-10-19 18:49:44 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 18:49:44 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 18:49:44 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 18:49:44 - HikariPool-1 - Starting...
+2024-10-19 18:49:45 - HikariPool-1 - Start completed.
+2024-10-19 18:49:45 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 18:49:45 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 18:49:45 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:49:46 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 18:49:46 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 18:49:46 - Started Graduatcion_projectApplication in 4.059 seconds (JVM running for 4.659)
+2024-10-19 18:50:17 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:50:17 - HikariPool-1 - Shutdown initiated...
+2024-10-19 18:50:17 - HikariPool-1 - Shutdown completed.
+2024-10-19 18:50:19 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 14688 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 18:50:19 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 18:50:20 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 18:50:20 - Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2024-10-19 18:50:20 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 18:50:20 - Starting service [Tomcat]
+2024-10-19 18:50:20 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 18:50:20 - Initializing Spring embedded WebApplicationContext
+2024-10-19 18:50:20 - Root WebApplicationContext: initialization completed in 967 ms
+2024-10-19 18:50:20 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 18:50:20 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 18:50:21 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 18:50:21 - HikariPool-1 - Starting...
+2024-10-19 18:50:21 - HikariPool-1 - Start completed.
+2024-10-19 18:50:21 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 18:50:21 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 18:50:21 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:50:22 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 18:50:22 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 18:50:22 - Started Graduatcion_projectApplication in 3.277 seconds (JVM running for 3.682)
+2024-10-19 18:52:43 - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xf20x010x000x060xee0x030x03%0x9d0xe1)^0xd1L0xb1*0xce0xb30xbf0xe80xa50x1a0x9fIAfv.0xa90x8a0x95Q0xd9^0x1dI0x880xe0) ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:271)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 18:53:13 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:53:13 - HikariPool-1 - Shutdown initiated...
+2024-10-19 18:53:13 - HikariPool-1 - Shutdown completed.
+2024-10-19 18:53:15 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 13788 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 18:53:15 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 18:53:15 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 18:53:15 - Finished Spring Data repository scanning in 37 ms. Found 3 JPA repository interfaces.
+2024-10-19 18:53:16 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 18:53:16 - Starting service [Tomcat]
+2024-10-19 18:53:16 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 18:53:16 - Initializing Spring embedded WebApplicationContext
+2024-10-19 18:53:16 - Root WebApplicationContext: initialization completed in 1007 ms
+2024-10-19 18:53:16 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 18:53:16 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 18:53:16 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 18:53:16 - HikariPool-1 - Starting...
+2024-10-19 18:53:16 - HikariPool-1 - Start completed.
+2024-10-19 18:53:16 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 18:53:17 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 18:53:17 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:53:17 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 18:53:18 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 18:53:18 - Started Graduatcion_projectApplication in 3.321 seconds (JVM running for 3.755)
+2024-10-19 18:57:05 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:57:05 - HikariPool-1 - Shutdown initiated...
+2024-10-19 18:57:05 - HikariPool-1 - Shutdown completed.
+2024-10-19 18:57:17 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 16616 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 18:57:17 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 18:57:17 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 18:57:17 - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2024-10-19 18:57:18 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 18:57:18 - Starting service [Tomcat]
+2024-10-19 18:57:18 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 18:57:18 - Initializing Spring embedded WebApplicationContext
+2024-10-19 18:57:18 - Root WebApplicationContext: initialization completed in 934 ms
+2024-10-19 18:57:18 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 18:57:18 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 18:57:18 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 18:57:18 - HikariPool-1 - Starting...
+2024-10-19 18:57:18 - HikariPool-1 - Start completed.
+2024-10-19 18:57:19 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 18:57:19 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 18:57:19 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 18:57:20 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 18:57:20 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 18:57:20 - Started Graduatcion_projectApplication in 3.226 seconds (JVM running for 3.668)
+2024-10-19 19:03:02 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:03:02 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:03:02 - Completed initialization in 0 ms
+2024-10-19 19:03:02 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:03:02 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:03:02 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:03:02 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:03:02 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:03:02 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:03:03 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:03:03 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:03:03 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:03:03 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:03:03 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:03:03 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:03:03 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:03:16 - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x070x120x010x000x070x0e0x030x030xbb0xdcf?0xdaf0x9a0xe50xf60x9a0xf00xa60xca%0xbb50x9890xfb00xed0xb00xe1n0xb30x0f0xc2k0x14_0x82v ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:271)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:46 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:46 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:48 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:48 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:48 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:48 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:48 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:04:50 - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xd20x010x000x060xce0x030x030xdc0xf1<X0xd60xfdA0x170xacu0xe40xd1o0xba`0xd6O0x1b0xc80x170xa2i0xb9Q0x93K0xea0xf90xeb0xd50xfb0xa2 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:419)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:271)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:53 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:53 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:04:53 - binding parameter [1] as [INTEGER] - [6]
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:04:53 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:04:53 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:05:33 - 
+    select
+        vtubersong0_.id as id1_1_,
+        vtubersong0_.added_time as added_ti2_1_,
+        vtubersong0_.channel_id as channel_3_1_,
+        vtubersong0_.classification as classifi4_1_,
+        vtubersong0_.description as descript5_1_,
+        vtubersong0_.last_week_view_count as last_wee6_1_,
+        vtubersong0_.published_at as publishe7_1_,
+        vtubersong0_.status as status8_1_,
+        vtubersong0_.title as title9_1_,
+        vtubersong0_.update_day_time as update_10_1_,
+        vtubersong0_.update_week_time as update_11_1_,
+        vtubersong0_.video_id as video_i12_1_,
+        vtubersong0_.view_count as view_co13_1_,
+        vtubersong0_.views_increase_day as views_i14_1_,
+        vtubersong0_.views_increase_week as views_i15_1_,
+        vtubersong0_.vtuber_name as vtuber_16_1_ 
+    from
+        vtuber_songs vtubersong0_ 
+    where
+        (
+            vtubersong0_.title like ? escape ?
+        ) 
+        and vtubersong0_.classification=? 
+    order by
+        vtubersong0_.view_count desc
+2024-10-19 19:05:33 - binding parameter [1] as [VARCHAR] - [%고세구%]
+2024-10-19 19:05:33 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:33 - binding parameter [3] as [VARCHAR] - [videos]
+2024-10-19 19:05:33 - 
+    select
+        vtuberenti0_.id as id1_2_,
+        vtuberenti0_.added_time as added_ti2_2_,
+        vtuberenti0_.channel_id as channel_3_2_,
+        vtuberenti0_.channel_img as channel_4_2_,
+        vtuberenti0_.description as descript5_2_,
+        vtuberenti0_.name as name6_2_,
+        vtuberenti0_.subscribers as subscrib7_2_,
+        vtuberenti0_.title as title8_2_ 
+    from
+        vtubers vtuberenti0_ 
+    where
+        vtuberenti0_.name like ? escape ?
+2024-10-19 19:05:33 - binding parameter [1] as [VARCHAR] - [%고세구%]
+2024-10-19 19:05:33 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:43 - 
+    select
+        vtubersong0_.id as id1_1_,
+        vtubersong0_.added_time as added_ti2_1_,
+        vtubersong0_.channel_id as channel_3_1_,
+        vtubersong0_.classification as classifi4_1_,
+        vtubersong0_.description as descript5_1_,
+        vtubersong0_.last_week_view_count as last_wee6_1_,
+        vtubersong0_.published_at as publishe7_1_,
+        vtubersong0_.status as status8_1_,
+        vtubersong0_.title as title9_1_,
+        vtubersong0_.update_day_time as update_10_1_,
+        vtubersong0_.update_week_time as update_11_1_,
+        vtubersong0_.video_id as video_i12_1_,
+        vtubersong0_.view_count as view_co13_1_,
+        vtubersong0_.views_increase_day as views_i14_1_,
+        vtubersong0_.views_increase_week as views_i15_1_,
+        vtubersong0_.vtuber_name as vtuber_16_1_ 
+    from
+        vtuber_songs vtubersong0_ 
+    where
+        (
+            vtubersong0_.title like ? escape ?
+        ) 
+        and vtubersong0_.classification=? 
+    order by
+        vtubersong0_.view_count desc
+2024-10-19 19:05:43 - binding parameter [1] as [VARCHAR] - [%ㄱㄷ%]
+2024-10-19 19:05:43 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:43 - binding parameter [3] as [VARCHAR] - [videos]
+2024-10-19 19:05:43 - 
+    select
+        vtuberenti0_.id as id1_2_,
+        vtuberenti0_.added_time as added_ti2_2_,
+        vtuberenti0_.channel_id as channel_3_2_,
+        vtuberenti0_.channel_img as channel_4_2_,
+        vtuberenti0_.description as descript5_2_,
+        vtuberenti0_.name as name6_2_,
+        vtuberenti0_.subscribers as subscrib7_2_,
+        vtuberenti0_.title as title8_2_ 
+    from
+        vtubers vtuberenti0_ 
+    where
+        vtuberenti0_.name like ? escape ?
+2024-10-19 19:05:43 - binding parameter [1] as [VARCHAR] - [%ㄱㄷ%]
+2024-10-19 19:05:43 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:44 - 
+    select
+        vtubersong0_.id as id1_1_,
+        vtubersong0_.added_time as added_ti2_1_,
+        vtubersong0_.channel_id as channel_3_1_,
+        vtubersong0_.classification as classifi4_1_,
+        vtubersong0_.description as descript5_1_,
+        vtubersong0_.last_week_view_count as last_wee6_1_,
+        vtubersong0_.published_at as publishe7_1_,
+        vtubersong0_.status as status8_1_,
+        vtubersong0_.title as title9_1_,
+        vtubersong0_.update_day_time as update_10_1_,
+        vtubersong0_.update_week_time as update_11_1_,
+        vtubersong0_.video_id as video_i12_1_,
+        vtubersong0_.view_count as view_co13_1_,
+        vtubersong0_.views_increase_day as views_i14_1_,
+        vtubersong0_.views_increase_week as views_i15_1_,
+        vtubersong0_.vtuber_name as vtuber_16_1_ 
+    from
+        vtuber_songs vtubersong0_ 
+    where
+        (
+            vtubersong0_.title like ? escape ?
+        ) 
+        and vtubersong0_.classification=? 
+    order by
+        vtubersong0_.view_count desc
+2024-10-19 19:05:44 - binding parameter [1] as [VARCHAR] - [%ㄱㄴ%]
+2024-10-19 19:05:44 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:44 - binding parameter [3] as [VARCHAR] - [videos]
+2024-10-19 19:05:44 - 
+    select
+        vtuberenti0_.id as id1_2_,
+        vtuberenti0_.added_time as added_ti2_2_,
+        vtuberenti0_.channel_id as channel_3_2_,
+        vtuberenti0_.channel_img as channel_4_2_,
+        vtuberenti0_.description as descript5_2_,
+        vtuberenti0_.name as name6_2_,
+        vtuberenti0_.subscribers as subscrib7_2_,
+        vtuberenti0_.title as title8_2_ 
+    from
+        vtubers vtuberenti0_ 
+    where
+        vtuberenti0_.name like ? escape ?
+2024-10-19 19:05:44 - binding parameter [1] as [VARCHAR] - [%ㄱㄴ%]
+2024-10-19 19:05:44 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:46 - 
+    select
+        vtubersong0_.id as id1_1_,
+        vtubersong0_.added_time as added_ti2_1_,
+        vtubersong0_.channel_id as channel_3_1_,
+        vtubersong0_.classification as classifi4_1_,
+        vtubersong0_.description as descript5_1_,
+        vtubersong0_.last_week_view_count as last_wee6_1_,
+        vtubersong0_.published_at as publishe7_1_,
+        vtubersong0_.status as status8_1_,
+        vtubersong0_.title as title9_1_,
+        vtubersong0_.update_day_time as update_10_1_,
+        vtubersong0_.update_week_time as update_11_1_,
+        vtubersong0_.video_id as video_i12_1_,
+        vtubersong0_.view_count as view_co13_1_,
+        vtubersong0_.views_increase_day as views_i14_1_,
+        vtubersong0_.views_increase_week as views_i15_1_,
+        vtubersong0_.vtuber_name as vtuber_16_1_ 
+    from
+        vtuber_songs vtubersong0_ 
+    where
+        (
+            vtubersong0_.title like ? escape ?
+        ) 
+        and vtubersong0_.classification=? 
+    order by
+        vtubersong0_.view_count desc
+2024-10-19 19:05:46 - binding parameter [1] as [VARCHAR] - [%가다%]
+2024-10-19 19:05:46 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:05:46 - binding parameter [3] as [VARCHAR] - [videos]
+2024-10-19 19:05:46 - 
+    select
+        vtuberenti0_.id as id1_2_,
+        vtuberenti0_.added_time as added_ti2_2_,
+        vtuberenti0_.channel_id as channel_3_2_,
+        vtuberenti0_.channel_img as channel_4_2_,
+        vtuberenti0_.description as descript5_2_,
+        vtuberenti0_.name as name6_2_,
+        vtuberenti0_.subscribers as subscrib7_2_,
+        vtuberenti0_.title as title8_2_ 
+    from
+        vtubers vtuberenti0_ 
+    where
+        vtuberenti0_.name like ? escape ?
+2024-10-19 19:05:46 - binding parameter [1] as [VARCHAR] - [%가다%]
+2024-10-19 19:05:46 - binding parameter [2] as [CHAR] - [\]
+2024-10-19 19:06:22 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:06:22 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:06:22 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:06:26 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 5248 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:06:26 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:06:26 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:06:26 - Finished Spring Data repository scanning in 37 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:06:27 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:06:27 - Starting service [Tomcat]
+2024-10-19 19:06:27 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:06:27 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:06:27 - Root WebApplicationContext: initialization completed in 1033 ms
+2024-10-19 19:06:27 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:06:27 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:06:27 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:06:27 - HikariPool-1 - Starting...
+2024-10-19 19:06:27 - HikariPool-1 - Start completed.
+2024-10-19 19:06:27 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:06:28 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:06:28 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:06:28 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:06:29 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:06:29 - Started Graduatcion_projectApplication in 3.295 seconds (JVM running for 3.674)
+2024-10-19 19:06:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:06:31 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:06:31 - Completed initialization in 1 ms
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:06:31 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:06:31 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:06:31 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:06:31 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:06:31 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:06:31 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:06:31 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:06:31 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:06:31 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:09:46 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:09:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:09:46 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:09:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:09:46 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:09:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:09:46 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:09:46 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:09:46 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:10:23 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:10:23 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:10:23 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:10:23 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:10:23 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:10:24 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:10:24 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:10:24 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:10:24 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:10:24 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:16:16 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:16:16 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:16:16 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:16:19 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 20148 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:16:19 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:16:20 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:16:20 - Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:16:20 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:16:20 - Starting service [Tomcat]
+2024-10-19 19:16:20 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:16:20 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:16:20 - Root WebApplicationContext: initialization completed in 986 ms
+2024-10-19 19:16:20 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:16:20 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:16:21 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:16:21 - HikariPool-1 - Starting...
+2024-10-19 19:16:21 - HikariPool-1 - Start completed.
+2024-10-19 19:16:21 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:16:21 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:16:21 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:16:22 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:16:22 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:16:22 - Started Graduatcion_projectApplication in 3.269 seconds (JVM running for 3.669)
+2024-10-19 19:16:41 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:16:41 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:16:41 - Completed initialization in 0 ms
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:16:41 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:16:41 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:16:41 - SQL Error: 1064, SQLState: 42000
+2024-10-19 19:16:41 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+2024-10-19 19:16:41 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy100.findTop10ByStatusOrderByViewsIncreaseWeekDesc(Unknown Source)
+	at com.example.Graduation_project.service.SortSongsService.getTop10SongsByViewsIncreaseWeek(SortSongsService.java:19)
+	at com.example.Graduation_project.controller.MainController.getMainPage(MainController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:16:41 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:16:41 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:16:41 - SQL Error: 1064, SQLState: 42000
+2024-10-19 19:16:41 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+2024-10-19 19:16:41 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy100.findTop10ByStatusOrderByViewsIncreaseWeekDesc(Unknown Source)
+	at com.example.Graduation_project.service.SortSongsService.getTop10SongsByViewsIncreaseWeek(SortSongsService.java:19)
+	at com.example.Graduation_project.controller.MainController.getMainPage(MainController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:16:41 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:16:41 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:16:41 - SQL Error: 1064, SQLState: 42000
+2024-10-19 19:16:41 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+2024-10-19 19:16:41 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy100.findTop10ByStatusOrderByViewsIncreaseWeekDesc(Unknown Source)
+	at com.example.Graduation_project.service.SortSongsService.getTop10SongsByViewsIncreaseWeek(SortSongsService.java:19)
+	at com.example.Graduation_project.controller.MainController.getMainPage(MainController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:16:41 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:16:41 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:16:41 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:16:41 - SQL Error: 1064, SQLState: 42000
+2024-10-19 19:16:41 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+2024-10-19 19:16:41 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'classification = 'videos' ORDER BY views_increase_week DESC LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:128)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy100.findTop10ByStatusOrderByViewsIncreaseWeekDesc(Unknown Source)
+	at com.example.Graduation_project.service.SortSongsService.getTop10SongsByViewsIncreaseWeek(SortSongsService.java:19)
+	at com.example.Graduation_project.controller.MainController.getMainPage(MainController.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-10-19 19:16:51 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:16:51 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:16:51 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:16:54 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 18612 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:16:54 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:16:54 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:16:54 - Finished Spring Data repository scanning in 36 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:16:55 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:16:55 - Starting service [Tomcat]
+2024-10-19 19:16:55 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:16:55 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:16:55 - Root WebApplicationContext: initialization completed in 1064 ms
+2024-10-19 19:16:55 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:16:55 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:16:55 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:16:55 - HikariPool-1 - Starting...
+2024-10-19 19:16:56 - HikariPool-1 - Start completed.
+2024-10-19 19:16:56 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:16:56 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:16:56 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:16:57 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:16:57 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:16:57 - Started Graduatcion_projectApplication in 3.519 seconds (JVM running for 3.913)
+2024-10-19 19:17:01 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:17:01 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:17:01 - Completed initialization in 0 ms
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:17:01 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:17:01 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:17:01 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:17:01 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:17:01 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:17:01 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:17:01 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:17:01 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:17:01 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:19:37 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:19:37 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:19:37 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:19:40 - Starting Graduatcion_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 20456 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:19:40 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:19:40 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:19:40 - Finished Spring Data repository scanning in 36 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:19:41 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:19:41 - Starting service [Tomcat]
+2024-10-19 19:19:41 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:19:41 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:19:41 - Root WebApplicationContext: initialization completed in 1020 ms
+2024-10-19 19:19:41 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:19:41 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:19:41 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:19:41 - HikariPool-1 - Starting...
+2024-10-19 19:19:42 - HikariPool-1 - Start completed.
+2024-10-19 19:19:42 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:19:42 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:19:42 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:19:43 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:19:43 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:19:43 - Started Graduatcion_projectApplication in 3.348 seconds (JVM running for 3.766)
+2024-10-19 19:19:45 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:19:45 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:19:45 - Completed initialization in 0 ms
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:19:45 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:19:45 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:19:45 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:19:45 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:19:45 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:19:45 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:19:45 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:19:45 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:19:45 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:20:14 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:20:14 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:20:14 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:20:14 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:20:14 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:20:15 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:20:15 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:20:15 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:20:15 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:20:15 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:21:15 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:21:15 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:21:15 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:23:52 - Starting Graduation_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 18788 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:23:52 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:23:53 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:23:53 - Finished Spring Data repository scanning in 35 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:23:53 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:23:53 - Starting service [Tomcat]
+2024-10-19 19:23:53 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:23:53 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:23:53 - Root WebApplicationContext: initialization completed in 1082 ms
+2024-10-19 19:23:53 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:23:54 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:23:54 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:23:54 - HikariPool-1 - Starting...
+2024-10-19 19:23:54 - HikariPool-1 - Start completed.
+2024-10-19 19:23:54 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:23:54 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:23:54 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:23:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:23:55 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:23:55 - Started Graduation_projectApplication in 3.294 seconds (JVM running for 3.729)
+2024-10-19 19:24:00 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:24:00 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:24:00 - HikariPool-1 - Shutdown completed.
+2024-10-19 19:24:04 - Starting Graduation_projectApplication using Java 17.0.1 on DESKTOP-EQBTQV8 with PID 12284 (C:\Users\lold2\Desktop\Graduaction_project\out\production\classes started by lold2 in C:\Users\lold2\Desktop\Graduaction_project)
+2024-10-19 19:24:04 - No active profile set, falling back to 1 default profile: "default"
+2024-10-19 19:24:05 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-19 19:24:05 - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2024-10-19 19:24:05 - Tomcat initialized with port(s): 8080 (http)
+2024-10-19 19:24:05 - Starting service [Tomcat]
+2024-10-19 19:24:05 - Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-10-19 19:24:05 - Initializing Spring embedded WebApplicationContext
+2024-10-19 19:24:05 - Root WebApplicationContext: initialization completed in 941 ms
+2024-10-19 19:24:06 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-19 19:24:06 - HHH000412: Hibernate ORM core version 5.6.12.Final
+2024-10-19 19:24:06 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-10-19 19:24:06 - HikariPool-1 - Starting...
+2024-10-19 19:24:06 - HikariPool-1 - Start completed.
+2024-10-19 19:24:06 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-10-19 19:24:06 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-19 19:24:06 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:24:07 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-19 19:24:07 - Tomcat started on port(s): 8080 (http) with context path ''
+2024-10-19 19:24:07 - Started Graduation_projectApplication in 3.123 seconds (JVM running for 3.525)
+2024-10-19 19:24:13 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-19 19:24:13 - Initializing Servlet 'dispatcherServlet'
+2024-10-19 19:24:13 - Completed initialization in 1 ms
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:24:13 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:24:13 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:24:13 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:24:13 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:24:13 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:24:13 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        RAND() LIMIT ?
+2024-10-19 19:24:13 - binding parameter [1] as [INTEGER] - [10]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        status = ? 
+        AND classification = 'videos' 
+    ORDER BY
+        views_increase_week DESC LIMIT 10
+2024-10-19 19:24:13 - binding parameter [1] as [VARCHAR] - [existing]
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        views_increase_day DESC LIMIT 10
+2024-10-19 19:24:13 - 
+    SELECT
+        * 
+    FROM
+        vtuber_songs 
+    WHERE
+        classification = 'videos' 
+    ORDER BY
+        published_at DESC LIMIT 10
+2024-10-19 19:24:45 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-19 19:24:45 - HikariPool-1 - Shutdown initiated...
+2024-10-19 19:24:45 - HikariPool-1 - Shutdown completed.
