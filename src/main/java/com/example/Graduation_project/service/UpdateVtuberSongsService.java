@@ -46,10 +46,10 @@ public class UpdateVtuberSongsService {
     }
 
 
-    @Scheduled(cron = "0 44 1 * * ?", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Seoul")
     public void fetchRecentVtuberSongs() {
         List<VtuberEntity> vtubers = vtuberRepository.findAll();
-        Instant oneDayAgoInstant = LocalDateTime.now().minusDays(7).toInstant(ZoneOffset.UTC); // 현재 시간에서 하루를 빼고 Instant로 변환
+        Instant oneDayAgoInstant = LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC); // 현재 시간에서 하루를 빼고 Instant로 변환
 
         for (VtuberEntity vtuber : vtubers) {
             fetchRecentSongsFromSearch(vtuber.getChannelId(), vtuber.getName(), oneDayAgoInstant);
@@ -276,30 +276,33 @@ public class UpdateVtuberSongsService {
         List<VtuberSongsEntity> songs = vtuberSongsRepository.findAll(); // 모든 곡 조회
         for (VtuberSongsEntity song : songs) {
             long newViewCount = fetchViewCount(song.getVideoId()); // 유튜브 API로 조회수 가져오기
+
+            // 조회수가 0인 경우 삭제된 동영상으로 간주하고 DB에서 삭제
+            if (newViewCount == 0) {
+                logger.info("삭제된 동영상 감지: " + song.getTitle() + " (" + song.getVideoId() + ")");
+                vtuberSongsRepository.delete(song); // DB에서 삭제
+                continue; // 다음 곡으로 이동
+            }
+
             if (newViewCount > 0) {
-                // null 체크를 위해 Long 타입 사용
                 Long currentViewCount = (song.getViewCount() != null) ? song.getViewCount() : 0L;
+                long viewIncreaseDay = newViewCount - currentViewCount;
+                song.setViewCount(newViewCount);
+                song.setViewsIncreaseDay(viewIncreaseDay);
+                song.setUpdateDayTime(LocalDateTime.now());
 
-                long viewIncreaseDay = newViewCount - currentViewCount; // 일간 조회수 증가량 계산
-                song.setViewCount(newViewCount); // 새로운 조회수 저장
-                song.setViewsIncreaseDay(viewIncreaseDay); // 일간 조회수 증가량 저장
-                song.setUpdateDayTime(LocalDateTime.now()); // 조회수 갱신 시간 저장
-
-                // 주간 조회수 갱신은 월요일에만 수행
                 if (LocalDateTime.now().getDayOfWeek() == DayOfWeek.MONDAY) {
-                    // null 체크 후 기본값 0L로 설정
                     Long lastWeekViewCount = (song.getLastWeekViewCount() != null) ? song.getLastWeekViewCount() : 0L;
-
-                    long viewIncreaseWeek = newViewCount - lastWeekViewCount; // 주간 조회수 증가량 계산
-                    song.setViewsIncreaseWeek(viewIncreaseWeek); // 주간 조회수 증가량 저장
-                    song.setLastWeekViewCount(newViewCount); // 현재 조회수를 last_week_view_count로 저장
-                    song.setUpdateWeekTime(LocalDateTime.now()); // 주간 조회수 갱신 시간 기록
+                    long viewIncreaseWeek = newViewCount - lastWeekViewCount;
+                    song.setViewsIncreaseWeek(viewIncreaseWeek);
+                    song.setLastWeekViewCount(newViewCount);
+                    song.setUpdateWeekTime(LocalDateTime.now());
                 }
 
-                vtuberSongsRepository.save(song); // DB에 저장
+                vtuberSongsRepository.save(song); // DB에 업데이트
             }
         }
-        logger.info("조회수 업데이트 완료");
+        logger.info("조회수 업데이트 및 삭제된 동영상 제거 완료");
     }
 
 }

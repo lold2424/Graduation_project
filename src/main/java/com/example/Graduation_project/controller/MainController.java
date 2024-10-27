@@ -24,10 +24,16 @@ public class MainController {
 
     @GetMapping
     public MainPageResponse getMainPage() {
-        List<VtuberSongsEntity> RandomVideoSongs = SongService.getRandomVideoSongs(10);
+        List<VtuberSongsEntity> RandomVideoSongs = SongService.getRandomVideoSongs(9);
         List<VtuberSongsEntity> top10WeeklySongs = sortSongsService.getTop10SongsByViewsIncreaseWeek();
         List<VtuberSongsEntity> top10DailySongs = sortSongsService.getTop10SongsByViewsIncreaseDay();
-        List<VtuberSongsEntity> top10RecentSongs = sortSongsService.getTop10SongsByPublishedAt();
-        return new MainPageResponse(RandomVideoSongs, top10WeeklySongs, top10DailySongs, top10RecentSongs);
+        List<VtuberSongsEntity> top10RecentSongs = sortSongsService.getTop9SongsByPublishedAt();
+        // 쇼츠 관련 데이터 추가
+        List<VtuberSongsEntity> randomShorts = SongService.getRandomShortsSongs(9);
+        List<VtuberSongsEntity> top10WeeklyShorts = sortSongsService.getTop10ShortsByViewsIncreaseWeek();
+        List<VtuberSongsEntity> top9RecentShorts = sortSongsService.getTop9ShortsByPublishedAt();
+
+        return new MainPageResponse(RandomVideoSongs, top10WeeklySongs, top10DailySongs, top10RecentSongs,
+                randomShorts, top10WeeklyShorts, top9RecentShorts);
     }
 }

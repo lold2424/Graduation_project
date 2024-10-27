@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/random-songs")
-public class RandomSongsController {
+public class    RandomSongsController {
 
     private final SongService SongService;
 

@@ -7,23 +7,28 @@ import SearchResultsPage from './page/SearchResultsPage';
 import WeeklyChart from './page/components/WeeklyChart';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const App: React.FC = () => {
     const [top10WeeklySongs, setTop10WeeklySongs] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
-    const [error, setError] = useState<string | null>(null); // 에러 상태 추가
+    const [top10DailySongs, setTop10DailySongs] = useState<any[]>([]);
+    const [top10WeeklyShorts, setTop10WeeklyShorts] = useState<any[]>([]);  // 주간 쇼츠 데이터 추가
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [chartType, setChartType] = useState<'weekly' | 'daily' | 'shorts'>('weekly'); // chartType 상태를 'weekly'로 초기화
 
     useEffect(() => {
-        // 동일한 /main 경로에서 데이터 가져오기
-        axios.get('/main') // 메인 페이지와 동일한 경로 사용
+        axios.get(`${apiUrl}/main`)
             .then((response) => {
-                // 주간 인기 차트 데이터 추출
-                setTop10WeeklySongs(response.data.top10WeeklySongs || []); // 데이터가 없을 경우 빈 배열 설정
-                setIsLoading(false); // 데이터 로드 완료
+                setTop10WeeklySongs(response.data.top10WeeklySongs || []);
+                setTop10DailySongs(response.data.top10DailySongs || []);
+                setTop10WeeklyShorts(response.data.top10WeeklyShorts || []); // 주간 인기 쇼츠 데이터 설정
+                setIsLoading(false);
             })
             .catch((error) => {
-                console.error('주간 인기 차트 데이터를 가져오는 중 오류 발생:', error);
-                setError('주간 인기 차트를 불러오는 중 오류가 발생했습니다.'); // 에러 상태 설정
-                setIsLoading(false); // 로딩 완료
+                console.error('차트 데이터를 가져오는 중 오류 발생:', error);
+                setError('차트 데이터를 불러오는 중 오류가 발생했습니다.');
+                setIsLoading(false);
             });
     }, []);
 
@@ -39,13 +44,43 @@ const App: React.FC = () => {
                         </Routes>
                     </div>
                     <div className="sidebar">
-                        {/* 주간 인기 차트 렌더링: 로딩 중이거나 에러일 경우 처리 */}
+                        <div className="button-group">
+                            <button
+                                onClick={() => setChartType('weekly')}
+                                className={chartType === 'weekly' ? 'active' : ''}
+                            >
+                                주간
+                            </button>
+                            <button
+                                onClick={() => setChartType('daily')}
+                                className={chartType === 'daily' ? 'active' : ''}
+                            >
+                                일간
+                            </button>
+                            <button
+                                onClick={() => setChartType('shorts')}
+                                className={chartType === 'shorts' ? 'active' : ''}
+                            >
+                                쇼츠
+                            </button>
+                        </div>
+
                         {isLoading ? (
-                            <p>주간 인기 차트를 불러오는 중입니다...</p>
+                            <p>차트를 불러오는 중입니다...</p>
                         ) : error ? (
                             <p>{error}</p>
                         ) : (
-                            <WeeklyChart top10WeeklySongs={top10WeeklySongs} />
+                            <>
+                                {chartType === 'weekly' && (
+                                    <WeeklyChart top10WeeklySongs={top10WeeklySongs} title="주간 인기 노래" />
+                                )}
+                                {chartType === 'daily' && (
+                                    <WeeklyChart top10WeeklySongs={top10DailySongs} title="일간 인기 노래" />
+                                )}
+                                {chartType === 'shorts' && (
+                                    <WeeklyChart top10WeeklySongs={top10WeeklyShorts} title="주간 인기 쇼츠" />
+                                )}
+                            </>
                         )}
                     </div>
                 </div>

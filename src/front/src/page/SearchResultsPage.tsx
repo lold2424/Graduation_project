@@ -4,6 +4,8 @@ import './SearchResultsPage.css'; // SearchResultsPage 전용 CSS 파일
 import { useLocation, useNavigate } from 'react-router-dom'; // useNavigate 사용
 import VideoCard from './components/VideoCard'; // VideoCard 컴포넌트 가져오기
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const SearchResultsPage: React.FC = () => {
     const [searchResults, setSearchResults] = useState<{ songs: any[], vtubers: any[] } | null>(null);
     const [visibleSongs, setVisibleSongs] = useState<any[]>([]);
@@ -15,11 +17,13 @@ const SearchResultsPage: React.FC = () => {
     const query = new URLSearchParams(location.search).get('query');
     const channelId = new URLSearchParams(location.search).get('channelId'); // channelId 가져옴
 
+    const queryValue = query ? query : "";  // null이면 빈 문자열로 처리
+
     useEffect(() => {
         // channelId 또는 query가 있을 때 API 호출
         if (query || channelId) {
-            axios.get('http://localhost:8080/api/v1/vtubers/search', {
-                params: { query, channelId } // query 또는 channelId 전달
+            axios.get(`${apiUrl}/api/v1/vtubers/search`, {
+                params: { query: queryValue, channelId } // query 또는 channelId 전달
             })
                 .then((response) => {
                     console.log('Search results:', response.data); // 결과 로그 확인

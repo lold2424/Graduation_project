@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './MainPage.css'; // MainPage 전용 CSS 파일
-import VideoCard from './components/VideoCard'; // 비디오 카드 컴포넌트
+import './MainPage.css';
+import VideoCard from './components/VideoCard';
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const MainPage: React.FC = () => {
     const [data, setData] = useState<any>({
         randomSongs: [],
         top10RecentSongs: [],
         top10DailySongs: [],
-        top10WeeklySongs: [], // 주간 인기 차트 데이터
+        top10WeeklySongs: [],
+        randomShorts: [],
+        top9RecentShorts: [], // 여기서 필드명을 변경
     });
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('/main') // 백엔드에서 데이터 가져오기
+        axios.get(`${apiUrl}/main`)
             .then((response) => {
-                console.log(response.data);
                 setData({
                     randomSongs: response.data.randomSongs || [],
                     top10RecentSongs: response.data.top10RecentSongs || [],
                     top10DailySongs: response.data.top10DailySongs || [],
-                    top10WeeklySongs: response.data.top10WeeklySongs || [], // 주간 인기 차트 데이터 설정
+                    top10WeeklySongs: response.data.top10WeeklySongs || [],
+                    randomShorts: response.data.randomShorts || [],
+                    top9RecentShorts: response.data.top9RecentShorts || [], // 여기도 필드명을 맞춤
                 });
                 setIsLoading(false);
             })
@@ -34,53 +39,50 @@ const MainPage: React.FC = () => {
         return <p>로딩 중...</p>;
     }
 
-    if (!data.randomSongs.length && !data.top10RecentSongs.length && !data.top10DailySongs.length && !data.top10WeeklySongs.length) {
-        return <p>데이터가 없습니다.</p>;
-    }
-
     return (
         <div className="main-layout">
-            {/* 왼쪽 8 부분: 메인 콘텐츠 */}
             <div className="content">
-                {/* 랜덤 노래 섹션 */}
-                <section>
-                    <h2>랜덤 노래</h2>
-                    <div className="video-grid">
-                        {data.randomSongs.length > 0 ? (
-                            data.randomSongs.map((song: any) => (
-                                <VideoCard key={song.id} song={song} />
-                            ))
-                        ) : (
-                            <p>랜덤 노래가 없습니다.</p>
-                        )}
-                    </div>
-                </section>
 
-                {/* 최신 노래 섹션 */}
                 <section>
                     <h2>최신 노래</h2>
                     <div className="video-grid">
-                        {data.top10RecentSongs.length > 0 ? (
-                            data.top10RecentSongs.map((song: any) => (
-                                <VideoCard key={song.id} song={song} />
+                        {data.top10RecentSongs?.map((song: any) => (
+                            <VideoCard key={song.id} song={song}/>
+                        ))}
+                    </div>
+                </section>
+
+                {/* 랜덤 노래 섹션 */}
+                <section>
+                    <h2>이 노래 어떠신가요?</h2>
+                    <div className="video-grid">
+                        {data.randomSongs?.map((song: any) => (
+                            <VideoCard key={song.id} song={song}/>
+                        ))}
+                    </div>
+                </section>
+
+                {/* 최신 쇼츠 섹션 */}
+                <section>
+                    <h2>최신 쇼츠</h2>
+                    <div className="video-grid">
+                        {data.top9RecentShorts && data.top9RecentShorts.length > 0 ? (
+                            data.top9RecentShorts.slice(0, 10).map((short: any) => (
+                                <VideoCard key={short.id} song={short}/>
                             ))
                         ) : (
-                            <p>최신 노래가 없습니다.</p>
+                            <p>최신 쇼츠가 없습니다.</p>
                         )}
                     </div>
                 </section>
 
-                {/* 일간 인기 노래 섹션 */}
+                {/* 랜덤 쇼츠 섹션 */}
                 <section>
-                    <h2>인기 있어요 (일간)</h2>
+                    <h2>이 쇼츠 어떠신가요</h2>
                     <div className="video-grid">
-                        {data.top10DailySongs.length > 0 ? (
-                            data.top10DailySongs.map((song: any) => (
-                                <VideoCard key={song.id} song={song} />
-                            ))
-                        ) : (
-                            <p>인기 있는 노래가 없습니다.</p>
-                        )}
+                        {data.randomShorts.slice(0, 9).map((short: any) => (
+                            <VideoCard key={short.id} song={short}/>
+                        ))}
                     </div>
                 </section>
             </div>

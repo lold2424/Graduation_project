@@ -31,8 +31,16 @@ public interface VtuberSongsRepository extends JpaRepository<VtuberSongsEntity, 
     List<VtuberSongsEntity> findTop10ByStatusOrderByViewsIncreaseDayDesc();
 
     // 최신순 정렬
-    @Query(value = "SELECT * FROM vtuber_songs WHERE classification = 'videos' ORDER BY published_at DESC LIMIT 10", nativeQuery = true)
+    @Query(value = "SELECT * FROM vtuber_songs WHERE classification = 'videos' ORDER BY published_at DESC LIMIT 9", nativeQuery = true)
     List<VtuberSongsEntity> findTop10ByPublishedAtDesc();
+
+    // 7일 기준 조회수 최상위 정렬 (쇼츠만)
+    @Query(value = "SELECT * FROM vtuber_songs WHERE classification = 'shorts' ORDER BY views_increase_week DESC LIMIT 10", nativeQuery = true)
+    List<VtuberSongsEntity> findTop10ShortsByViewsIncreaseWeekDesc();
+
+    // 최신순 정렬 (쇼츠만)
+    @Query(value = "SELECT * FROM vtuber_songs WHERE classification = 'shorts' ORDER BY published_at DESC LIMIT 9", nativeQuery = true)
+    List<VtuberSongsEntity> findTop9ShortsByPublishedAtDesc();
 
 
     // 페이징을 통한 검색과 분류를 위한 메서드

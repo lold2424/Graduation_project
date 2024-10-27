@@ -26,7 +26,17 @@ public class SortSongsService {
     }
 
     // 최신순 정렬 (노래만)
-    public List<VtuberSongsEntity> getTop10SongsByPublishedAt() {
+    public List<VtuberSongsEntity> getTop9SongsByPublishedAt() {
         return vtuberSongsRepository.findTop10ByPublishedAtDesc();
+    }
+
+    // 7일 기준 조회수 최상위 정렬 (쇼츠만)
+    public List<VtuberSongsEntity> getTop10ShortsByViewsIncreaseWeek() {
+        return vtuberSongsRepository.findTop10ShortsByViewsIncreaseWeekDesc();
+    }
+
+    // 최신순 정렬 (쇼츠만)
+    public List<VtuberSongsEntity> getTop9ShortsByPublishedAt() {
+        return vtuberSongsRepository.findTop9ShortsByPublishedAtDesc();
     }
 }

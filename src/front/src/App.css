@@ -34,3 +34,35 @@
   overflow-x: hidden; /* 가로 스크롤 방지 */
   box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
 }
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 2px solid #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  color: #007bff;
+  background-color: #fff;
+  outline: none;
+}
+
+.button-group button.active {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.button-group button:hover {
+  background-color: #0056b3;
+  color: #fff;
+  border-color: #0056b3;
+}
