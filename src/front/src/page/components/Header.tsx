@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // 페이지 이동을 위한 useNavigate 훅 사용
-import './Header.css';  // 스타일 정의
+import { useNavigate } from 'react-router-dom';
+import './Header.css';
 
 interface HeaderProps {
-    onSearch?: (searchTerm: string) => void; // 선택적으로 받도록 설정
+    onSearch?: (searchTerm: string, genderFilter: string) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [genderFilter, setGenderFilter] = useState('all');
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        const trimmedSearchTerm = searchTerm.trim(); // 공백 제거된 검색어
-        if (trimmedSearchTerm.length < 2) {  // 2글자 이상이어야 검색 가능
+        const trimmedSearchTerm = searchTerm.trim();
+        if (trimmedSearchTerm.length < 2) {
             alert('검색어는 두 글자 이상이 필요합니다.');
             return;
         }
 
         if (onSearch) {
-            onSearch(searchTerm);  // onSearch가 있는 경우 실행
+            onSearch(searchTerm, genderFilter);
         } else {
-            navigate(`/search?query=${searchTerm}`); // 기본 동작으로 페이지 이동
+            navigate(`/search?query=${searchTerm}&gender=${genderFilter}`);
         }
     };
 
@@ -31,18 +32,27 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     };
 
     const handleClear = () => {
-        setSearchTerm('');  // 검색어 초기화
+        setSearchTerm('');
+    };
+
+    const handleGenderFilter = (filter: string) => {
+        setGenderFilter(filter);
     };
 
     const handleGoHome = () => {
-        navigate('/');  // 홈으로 이동
+        navigate('/');
     };
 
     return (
         <header className="header">
-            <button className="home-btn" onClick={handleGoHome}>
-                홈
-            </button>
+            {/* 로고 이미지 */}
+            <img
+                src="/images/V-Song.png"
+                alt="V-Song Logo"
+                className="logo"
+                onClick={handleGoHome}
+                style={{ cursor: 'pointer', height: '40px' }} // 로고 클릭 시 홈으로 이동
+            />
 
             <div className="search-bar">
                 <input
@@ -50,11 +60,11 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
                     placeholder="검색"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyPress={handleKeyPress}  // Enter 키 입력 시 검색
+                    onKeyPress={handleKeyPress}
                 />
                 {searchTerm && (
                     <button type="button" className="clear-btn" onClick={handleClear}>
-                        &#x2715; {/* X 아이콘 */}
+                        &#x2715;
                     </button>
                 )}
                 <button type="submit" className="search-btn" onClick={handleSearch}>

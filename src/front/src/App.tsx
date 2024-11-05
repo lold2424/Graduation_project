@@ -18,7 +18,7 @@ const App: React.FC = () => {
     const [chartType, setChartType] = useState<'weekly' | 'daily' | 'shorts'>('weekly'); // chartType 상태를 'weekly'로 초기화
 
     useEffect(() => {
-        axios.get(`${apiUrl}/main`)
+        axios.get(`https://www.vsong.art/main`)
             .then((response) => {
                 setTop10WeeklySongs(response.data.top10WeeklySongs || []);
                 setTop10DailySongs(response.data.top10DailySongs || []);
