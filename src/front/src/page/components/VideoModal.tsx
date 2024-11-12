@@ -32,9 +32,6 @@ const VideoModal: React.FC<VideoModalProps> = ({ videoId, onClose }) => {
     return (
         <div className="video-modal" onClick={handleBackgroundClick}>
             <div className="video-modal-content">
-                <button className="video-modal-close" onClick={onClose}>
-                    &times;
-                </button>
                 <iframe
                     width="100%"
                     height="100%"

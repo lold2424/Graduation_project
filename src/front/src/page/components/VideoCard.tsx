@@ -1,5 +1,3 @@
-// VideoCard.tsx
-
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import VideoModal from './VideoModal'; // 모달 컴포넌트 임포트
@@ -33,18 +31,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ song }) => {
         leaveTimeoutRef.current = window.setTimeout(() => setHovered(false), 250);
     };
 
-    const handleTitleClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        navigate(`/search?query=${encodeURIComponent(song.title)}`);
-    };
-
-    const handleChannelClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        navigate(`/search?channelId=${encodeURIComponent(song.channelId)}`);
-    };
-
     const handleCardClick = () => {
-        setIsModalOpen(true); // 모달을 열도록 설정
+        setIsModalOpen(true); // 카드 클릭 시 모달 열기
     };
 
     const handleCloseModal = () => {
@@ -62,16 +50,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ song }) => {
                 {!hovered ? (
                     <div className="thumbnail-content">
                         <img src={thumbnailUrl} alt={song.title} className="thumbnail" />
-                        <h3 onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
-                            {song.title}
-                        </h3>
+                        <h3 style={{ cursor: 'pointer' }}>{song.title}</h3>
                     </div>
                 ) : (
                     <div className="hover-content">
-                        <h3 onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
-                            {song.title}
-                        </h3>
-                        <p onClick={handleChannelClick} style={{ cursor: 'pointer', color: 'blue' }}>
+                        <h3 style={{ cursor: 'pointer' }}>{song.title}</h3>
+                        <p style={{ color: 'blue' }}>
                             채널명: {song.vtuberName}
                         </p>
                         <p>조회수: {song.viewCount.toLocaleString()}</p>

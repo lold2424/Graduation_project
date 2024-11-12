@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/main`)
+        axios.get(`https://www.vsong.art/main`)
             .then((response) => {
                 setData({
                     randomSongs: response.data.randomSongs || [],
