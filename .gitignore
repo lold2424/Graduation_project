@@ -63,3 +63,7 @@ out/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignore node_modules in src directory
+src/front/node_modules/*
+logs/*
