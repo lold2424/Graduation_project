@@ -22,7 +22,7 @@ const SearchResultsPage: React.FC = () => {
     useEffect(() => {
         // channelId 또는 query가 있을 때 API 호출
         if (query || channelId) {
-            axios.get(`https://www.vsong.art/api/v1/vtubers/search`, {
+            axios.get(`http://localhost:8080/api/v1/vtubers/search`, {
                 params: { query: queryValue, channelId } // query 또는 channelId 전달
             })
                 .then((response) => {

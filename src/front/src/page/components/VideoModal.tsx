@@ -1,6 +1,4 @@
-// components/VideoModal.tsx
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import './VideoModal.css';
 
 interface VideoModalProps {
@@ -9,8 +7,30 @@ interface VideoModalProps {
 }
 
 const VideoModal: React.FC<VideoModalProps> = ({ videoId, onClose }) => {
+    // 키보드 이벤트 핸들러
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            onClose();
+        }
+    };
+
+    // 모달 외부 클릭 핸들러
+    const handleBackgroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if ((event.target as HTMLDivElement).classList.contains('video-modal')) {
+            onClose();
+        }
+    };
+
+    // 키보드 이벤트 리스너 등록 및 해제
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
     return (
-        <div className="video-modal">
+        <div className="video-modal" onClick={handleBackgroundClick}>
             <div className="video-modal-content">
                 <button className="video-modal-close" onClick={onClose}>
                     &times;
