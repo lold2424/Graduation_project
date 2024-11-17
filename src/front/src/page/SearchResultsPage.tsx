@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './SearchResultsPage.css'; // SearchResultsPage 전용 CSS 파일
-import { useLocation, useNavigate } from 'react-router-dom'; // useNavigate 사용
-import VideoCard from './components/VideoCard'; // VideoCard 컴포넌트 가져오기
+import './SearchResultsPage.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import VideoCard from './components/VideoCard';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -15,31 +15,37 @@ const SearchResultsPage: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const query = new URLSearchParams(location.search).get('query');
-    const channelId = new URLSearchParams(location.search).get('channelId'); // channelId 가져옴
+    const channelId = new URLSearchParams(location.search).get('channelId');
 
-    const queryValue = query ? query : "";  // null이면 빈 문자열로 처리
+    const queryValue = query ? query : "";
+
+    interface SearchResultsApiResponse {
+        songs: any[];
+        vtubers: {
+            channelId: string;
+            channelImg: string;
+            name: string;
+            subscribers: string;
+        }[];
+    }
 
     useEffect(() => {
-        // channelId 또는 query가 있을 때 API 호출
         if (query || channelId) {
-            axios.get(`https://www.vsong.art/api/v1/vtubers/search`, {
-                params: { query: queryValue, channelId } // query 또는 channelId 전달
+            axios.get<SearchResultsApiResponse>('https://www.vsong.art/api/v1/vtubers/search', {
+                params: { query: queryValue, channelId },
             })
                 .then((response) => {
-                    console.log('Search results:', response.data); // 결과 로그 확인
-                    if (response.data) {
-                        setSearchResults(response.data);
-                        setVisibleSongs(response.data.songs.slice(0, 10)); // 처음 10개 노출
-                    }
+                    setSearchResults(response.data);
+                    setVisibleSongs(response.data.songs.slice(0, 10));
                 })
                 .catch((error) => {
                     console.error('검색 중 오류 발생:', error);
                 });
         }
-    }, [query, channelId]); // query와 channelId가 변경될 때마다 호출
+    }, [query, channelId]);
 
     const loadMoreSongs = () => {
-        if (!searchResults) return; // searchResults가 null인 경우 처리
+        if (!searchResults) return;
 
         const nextPage = songPage + 1;
         const newSongs = searchResults.songs.slice(visibleSongs.length, visibleSongs.length + 10);

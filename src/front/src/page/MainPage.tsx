@@ -16,8 +16,17 @@ const MainPage: React.FC = () => {
     });
     const [isLoading, setIsLoading] = useState(true);
 
+    interface MainPageApiResponse {
+        randomSongs: any[];
+        top10RecentSongs: any[];
+        top10DailySongs: any[];
+        top10WeeklySongs: any[];
+        randomShorts: any[];
+        top9RecentShorts: any[];
+    }
+
     useEffect(() => {
-        axios.get(`https://www.vsong.art/main`)
+        axios.get<MainPageApiResponse>('https://www.vsong.art/main')
             .then((response) => {
                 setData({
                     randomSongs: response.data.randomSongs || [],
@@ -25,7 +34,7 @@ const MainPage: React.FC = () => {
                     top10DailySongs: response.data.top10DailySongs || [],
                     top10WeeklySongs: response.data.top10WeeklySongs || [],
                     randomShorts: response.data.randomShorts || [],
-                    top9RecentShorts: response.data.top9RecentShorts || [], // 여기도 필드명을 맞춤
+                    top9RecentShorts: response.data.top9RecentShorts || [],
                 });
                 setIsLoading(false);
             })

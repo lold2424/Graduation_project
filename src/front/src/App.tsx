@@ -17,12 +17,20 @@ const App: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [chartType, setChartType] = useState<'weekly' | 'daily' | 'shorts'>('weekly'); // chartType 상태를 'weekly'로 초기화
 
+    // 타입 정의
+    interface MainApiResponse {
+        top10WeeklySongs: any[];
+        top10DailySongs: any[];
+        top10WeeklyShorts: any[];
+    }
+
+// 수정된 useEffect
     useEffect(() => {
-        axios.get(`https://www.vsong.art/main`)
+        axios.get<MainApiResponse>('https://www.vsong.art/main')
             .then((response) => {
                 setTop10WeeklySongs(response.data.top10WeeklySongs || []);
                 setTop10DailySongs(response.data.top10DailySongs || []);
-                setTop10WeeklyShorts(response.data.top10WeeklyShorts || []); // 주간 인기 쇼츠 데이터 설정
+                setTop10WeeklyShorts(response.data.top10WeeklyShorts || []);
                 setIsLoading(false);
             })
             .catch((error) => {
