@@ -17,8 +17,12 @@ public class VtuberEntity {
     @Column(length = 255)
     private String description;
     private BigInteger subscribers;
-    private LocalDateTime addedTime; // 추가된 시간 필드
+    private LocalDateTime addedTime;
     private String channelImg;
+    @Column(length = 10)
+    private String gender;
+    @Column(length = 10)
+    private String status;
 
     // Getter와 Setter
     public Long getId() {
@@ -83,5 +87,21 @@ public class VtuberEntity {
 
     public void setChannelImg(String channelImg) {
         this.channelImg = channelImg;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

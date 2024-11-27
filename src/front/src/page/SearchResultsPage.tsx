@@ -31,7 +31,7 @@ const SearchResultsPage: React.FC = () => {
 
     useEffect(() => {
         if (query || channelId) {
-            axios.get<SearchResultsApiResponse>('https://www.vsong.art/api/v1/vtubers/search', {
+            axios.get<SearchResultsApiResponse>('http://localhost:8080/api/v1/vtubers/search', {
                 params: { query: queryValue, channelId },
             })
                 .then((response) => {

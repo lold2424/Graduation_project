@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
 // 수정된 useEffect
     useEffect(() => {
-        axios.get<MainApiResponse>('https://www.vsong.art/main')
+        axios.get<MainApiResponse>('http://localhost:8080/main')
             .then((response) => {
                 setTop10WeeklySongs(response.data.top10WeeklySongs || []);
                 setTop10DailySongs(response.data.top10DailySongs || []);

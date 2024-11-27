@@ -26,7 +26,7 @@ const MainPage: React.FC = () => {
     }
 
     useEffect(() => {
-        axios.get<MainPageApiResponse>('https://www.vsong.art/main')
+        axios.get<MainPageApiResponse>('http://localhost:8080/main')
             .then((response) => {
                 setData({
                     randomSongs: response.data.randomSongs || [],

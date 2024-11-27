@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +23,6 @@ public interface VtuberRepository extends JpaRepository<VtuberEntity, Long> {
 
     // 버튜버 이름으로 검색하기 (대소문자 무시)
     List<VtuberEntity> findAllByNameContaining(String name);
+
+    List<VtuberEntity> findByStatus(String status);
 }

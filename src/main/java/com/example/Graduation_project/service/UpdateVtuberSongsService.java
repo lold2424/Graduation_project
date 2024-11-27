@@ -4,10 +4,9 @@ import com.example.Graduation_project.entity.VtuberEntity;
 import com.example.Graduation_project.entity.VtuberSongsEntity;
 import com.example.Graduation_project.repository.VtuberRepository;
 import com.example.Graduation_project.repository.VtuberSongsRepository;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.SearchListResponse;
-import com.google.api.services.youtube.model.SearchResult;
-import org.apache.commons.text.StringEscapeUtils;
+import com.google.api.services.youtube.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,11 @@ public class UpdateVtuberSongsService {
     // 노래 관련 키워드 리스트 (제목만 필터링)
     private static final List<String> SONG_KEYWORDS = List.of("music", "song", "cover", "original", "official", "mv", "뮤직", "노래", "커버");
 
-    public UpdateVtuberSongsService(YouTube youTube, VtuberRepository vtuberRepository, VtuberSongsRepository vtuberSongsRepository, @Value("${youtube.api.keys}") List<String> apiKeys) {
+    public UpdateVtuberSongsService(
+            YouTube youTube,
+            VtuberRepository vtuberRepository,
+            VtuberSongsRepository vtuberSongsRepository,
+            @Value("${youtube.api.keys}") List<String> apiKeys) {
         this.youTube = youTube;
         this.vtuberRepository = vtuberRepository;
         this.vtuberSongsRepository = vtuberSongsRepository;
@@ -41,218 +44,27 @@ public class UpdateVtuberSongsService {
         this.keyUsage = new ArrayList<>(apiKeys.size());
         // keyUsage 리스트의 크기와 값 초기화
         for (int i = 0; i < apiKeys.size(); i++) {
-            this.keyUsage.add(true); // 모든 키를 처음엔 사용 가능으로 설정
+            this.keyUsage.add(true); // 모든 키를 처음엔 사용 가능으로 m설정
         }
     }
 
+    @Scheduled(cron = "0 01 15 * * ?", zone = "Asia/Seoul")
+    public void fetchVtuberSongs() {
+        List<VtuberEntity> newVtubers = vtuberRepository.findByStatus("new");
+        List<VtuberEntity> existingVtubers = vtuberRepository.findByStatus("existing");
 
-    @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Seoul")
-    public void fetchRecentVtuberSongs() {
-        List<VtuberEntity> vtubers = vtuberRepository.findAll();
-        Instant oneDayAgoInstant = LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC); // 현재 시간에서 하루를 빼고 Instant로 변환
-
-        for (VtuberEntity vtuber : vtubers) {
-            fetchRecentSongsFromSearch(vtuber.getChannelId(), vtuber.getName(), oneDayAgoInstant);
-        }
-    }
-
-    private void fetchRecentSongsFromSearch(String channelId, String channelName, Instant oneDayAgoInstant) {
-        String combinedQuery = "music|cover|original|official";
-        String pageToken = null;
-        int keyAttempt = 0;
-
-        do {
-            try {
-                YouTube.Search.List search = youTube.search().list("id,snippet");
-                search.setChannelId(channelId);
-                search.setQ(combinedQuery);
-                search.setType("video");
-                search.setOrder("date");
-                search.setFields("nextPageToken,items(id/videoId,snippet/title,snippet/publishedAt,snippet/channelId)");
-                search.setMaxResults(30L);
-                search.setKey(apiKeys.get(currentKeyIndex));
-                search.setPageToken(pageToken);
-
-                // publishedAfter 파라미터를 설정하여 검색 범위를 최근 1일 이내로 제한
-                search.setPublishedAfter(new com.google.api.client.util.DateTime(oneDayAgoInstant.toEpochMilli()));
-
-                SearchListResponse searchResponse = search.execute();
-                List<SearchResult> searchResults = searchResponse.getItems();
-                handleSearchResults(searchResults, channelName);  // publishedAt 확인 필요 없음
-
-                pageToken = searchResponse.getNextPageToken();
-            } catch (IOException e) {
-                logger.severe("API 호출 중 오류 발생 - 채널명: " + channelName + ", 채널 ID: " + channelId + " - 오류 메시지: " + e.getMessage());
-                keyUsage.set(currentKeyIndex, false);  // 현재 키가 사용 불가능하다고 표시
-                keyAttempt++;
-                if (keyAttempt >= apiKeys.size()) {
-                    logger.severe("모든 API 키의 할당량 소진됨. 작업 종료. 마지막 작업 버튜버: " + channelName + " (" + channelId + ")");
-                    return;  // 모든 키의 할당량 소진 시 종료
-                }
-                switchApiKey();
-            }
-        } while (pageToken != null);
-    }
-
-    private void handleSearchResults(List<SearchResult> searchResults, String channelName) {
-        for (SearchResult result : searchResults) {
-            String videoId = result.getId().getVideoId();
-            String title = result.getSnippet().getTitle().toLowerCase();
-
-            // 제목에 노래와 관련된 키워드가 포함되어 있는지 확인
-            if (isSongRelated(title)) {
-                Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
-                if (!existingSongOpt.isPresent()) {
-                    saveNewSong(result, channelName, videoId); // videoId 전달
-                }
-            } else {
-                logger.info("노래와 관련 없는 동영상 필터링: " + title);
-            }
-        }
-    }
-
-
-    private void handleSearchResults(List<SearchResult> searchResults, String channelName, LocalDateTime threeDaysAgo) {
-        for (SearchResult result : searchResults) {
-            String videoId = result.getId().getVideoId();
-            LocalDateTime publishedAt = Instant.ofEpochMilli(result.getSnippet().getPublishedAt().getValue())
-                    .atZone(ZoneId.systemDefault()).toLocalDateTime();
-
-            // 최근 3일 이내에 게시된 동영상인지 확인
-            if (publishedAt.isAfter(threeDaysAgo)) {
-                String title = result.getSnippet().getTitle().toLowerCase();
-
-                // 제목에 노래와 관련된 키워드가 포함되어 있는지 확인
-                if (isSongRelated(title)) {
-                    Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
-                    if (!existingSongOpt.isPresent()) {
-                        saveNewSong(result, channelName, videoId); // videoId 전달
-                    }
-                } else {
-                    logger.info("노래와 관련 없는 동영상 필터링: " + title);
-                }
-            }
-        }
-    }
-
-    // 제목에 노래 관련 키워드가 포함되어 있는지 확인하는 함수
-    private boolean isSongRelated(String title) {
-        // 제목에 SONG_KEYWORDS에 해당하는 단어가 포함되어 있는지 확인
-        return SONG_KEYWORDS.stream().anyMatch(title::contains);
-    }
-
-    private void saveNewSong(SearchResult result, String channelName, String videoId) {
-
-        String decodedTitle = decodeHtmlEntities(result.getSnippet().getTitle());
-
-        String classification = determineClassification(videoId, result.getSnippet().getTitle());
-
-        // 분류가 "ignore"인 경우 저장하지 않음
-        if ("ignore".equals(classification)) {
-            logger.info("8분을 초과한 비디오이므로 저장하지 않음: " + result.getSnippet().getTitle());
-            return; // 8분 이상인 경우 저장하지 않음
+        // "new" 상태의 버튜버에 대해 모든 노래를 가져옴
+        for (VtuberEntity vtuber : newVtubers) {
+            fetchAllSongsFromPlaylist(vtuber.getChannelId(), vtuber.getName());
+            // 모든 노래를 가져온 후 상태를 "existing"으로 변경
+            vtuber.setStatus("existing");
+            vtuberRepository.save(vtuber);
         }
 
-        VtuberSongsEntity song = new VtuberSongsEntity();
-        song.setChannelId(result.getSnippet().getChannelId());
-        song.setVideoId(result.getId().getVideoId());
-        song.setTitle(result.getSnippet().getTitle());
-        song.setPublishedAt(Instant.ofEpochMilli(result.getSnippet().getPublishedAt().getValue())
-                .atZone(ZoneId.systemDefault()).toLocalDateTime());
-        song.setAddedTime(LocalDateTime.now());
-        song.setUpdateDayTime(LocalDateTime.now());
-        song.setUpdateWeekTime(LocalDateTime.now());
-        song.setVtuberName(channelName);
-        song.setViewCount(0L);  // 초기 조회수를 0으로 설정
-        song.setViewsIncreaseDay(0L);  // 초기 일간 조회수 증가량을 0으로 설정
-        song.setViewsIncreaseWeek(0L);  // 초기 주간 조회수 증가량을 0으로 설정
-        song.setLastWeekViewCount(0L);  // 초기 주간 조회수
-        song.setStatus("new");
-
-        // 쇼츠 또는 비디오를 구분하여 classification 설정
-        song.setClassification(classification);
-
-        vtuberSongsRepository.save(song);
-    }
-
-    private String decodeHtmlEntities(String title) {
-        return StringEscapeUtils.unescapeHtml4(title);  // HTML 엔티티를 디코딩
-    }
-
-    private String determineClassification(String videoId, String title) {
-        // 비디오의 길이를 기준으로 쇼츠 및 8분 이상 여부 판단
-        try {
-            YouTube.Videos.List request = youTube.videos().list("contentDetails");
-            request.setId(videoId);
-            request.setKey(apiKeys.get(currentKeyIndex));
-
-            var response = request.execute();
-            if (!response.getItems().isEmpty()) {
-                var videoDetails = response.getItems().get(0).getContentDetails();
-                if (videoDetails != null && videoDetails.getDuration() != null) {
-                    Duration videoDuration = Duration.parse(videoDetails.getDuration());
-
-                    // 영상 길이가 8분을 초과하는 경우, "ignore"로 분류하여 저장하지 않음
-                    if (videoDuration.compareTo(Duration.ofMinutes(8)) > 0) {
-                        logger.info("영상 길이가 8분을 초과하여 저장하지 않음: " + videoId);
-                        return "ignore";  // 8분 이상인 경우 무시 처리
-                    }
-
-                    // 1분 이하면 쇼츠로 분류
-                    if (videoDuration.compareTo(Duration.ofMinutes(1)) <= 0) {
-                        return "shorts";
-                    }
-                }
-            }
-        } catch (IOException e) {
-            logger.severe("Error fetching video details for classification: " + e.getMessage());
-            switchApiKey();
-        }
-
-        // 비디오 제목에 "short"가 포함되어 있는 경우도 쇼츠로 간주
-        if (title.toLowerCase().contains("short")) {
-            return "shorts";
-        }
-
-        // 기본적으로는 일반 비디오로 분류
-        return "videos";
-    }
-
-    private long fetchViewCount(String videoId) {
-        try {
-            YouTube.Videos.List request = youTube.videos().list("statistics");
-            request.setId(videoId);
-            request.setKey(apiKeys.get(currentKeyIndex));
-            var response = request.execute();
-            if (!response.getItems().isEmpty()) {
-                return response.getItems().get(0).getStatistics().getViewCount().longValue();  // Long 타입으로 반환
-            }
-        } catch (IOException e) {
-            logger.severe("Failed to fetch view counts: " + e.getMessage());
-            switchApiKey();
-        }
-        return 0;  // 오류 발생시 0 반환
-    }
-
-
-    private void switchApiKey() {
-        int initialKeyIndex = currentKeyIndex;
-        do {
-            currentKeyIndex = (currentKeyIndex + 1) % apiKeys.size();
-            if (keyUsage.get(currentKeyIndex)) {
-                logger.info("API 키 전환: " + apiKeys.get(currentKeyIndex));
-                return;  // 사용 가능한 API 키를 찾으면 바로 반환
-            }
-        } while (currentKeyIndex != initialKeyIndex); // 모든 키를 순환했는지 확인
-
-        // 모든 키가 할당량을 초과한 경우
-        logger.severe("모든 API 키의 할당량이 소진됨. 작업을 중단합니다.");
-        throw new RuntimeException("모든 API 키의 할당량이 소진되었습니다.");
-    }
-
-    private void resetKeyUsage() {
-        for (int i = 0; i < keyUsage.size(); i++) {
-            keyUsage.set(i, true); // 모든 키를 사용 가능하게 설정
+        // "existing" 상태의 버튜버에 대해 최근 3일 이내의 노래를 가져옴
+        Instant threeDaysAgoInstant = LocalDateTime.now().minusDays(3).toInstant(ZoneOffset.UTC);
+        for (VtuberEntity vtuber : existingVtubers) {
+            fetchRecentSongsFromSearch(vtuber.getChannelId(), vtuber.getName(), threeDaysAgoInstant);
         }
     }
 
@@ -270,7 +82,7 @@ public class UpdateVtuberSongsService {
         logger.info("Updated " + newSongs.size() + " songs from 'new' to 'existing'.");
     }
 
-    @Scheduled(cron = "0 0 0 * * ?", zone = "Asia/Seoul") // 매일 특정 시간에 실행
+    @Scheduled(cron = "0 0 0 * * ?", zone = "Asia/Seoul")
     public void updateViewCounts() {
         resetKeyUsage(); // API 키 사용 상태를 리셋
         List<VtuberSongsEntity> songs = vtuberSongsRepository.findAll(); // 모든 곡 조회
@@ -305,4 +117,242 @@ public class UpdateVtuberSongsService {
         logger.info("조회수 업데이트 및 삭제된 동영상 제거 완료");
     }
 
+    private void fetchAllSongsFromPlaylist(String channelId, String channelName) {
+        try {
+            String uploadsPlaylistId = getUploadsPlaylistId(channelId);
+            if (uploadsPlaylistId == null) {
+                logger.severe("Uploads playlist not found for channel ID: " + channelId);
+                return;
+            }
+
+            String pageToken = null;
+            do {
+                YouTube.PlaylistItems.List playlistItemsRequest = youTube.playlistItems()
+                        .list("contentDetails,snippet");
+                playlistItemsRequest.setPlaylistId(uploadsPlaylistId);
+                playlistItemsRequest.setMaxResults(50L);
+                playlistItemsRequest.setPageToken(pageToken);
+                playlistItemsRequest.setKey(apiKeys.get(currentKeyIndex));
+
+                PlaylistItemListResponse playlistItemResult = playlistItemsRequest.execute();
+                List<PlaylistItem> playlistItems = playlistItemResult.getItems();
+
+                List<String> videoIds = new ArrayList<>();
+                for (PlaylistItem item : playlistItems) {
+                    videoIds.add(item.getContentDetails().getVideoId());
+                }
+
+                fetchAndProcessVideos(videoIds, channelName);
+
+                pageToken = playlistItemResult.getNextPageToken();
+            } while (pageToken != null);
+        } catch (GoogleJsonResponseException e) {
+            handleApiException(e, channelName, channelId);
+        } catch (IOException e) {
+            logger.severe("IOException while fetching playlist items for channel ID: " + channelId + " - " + e.getMessage());
+        }
+    }
+
+    private String getUploadsPlaylistId(String channelId) throws IOException {
+        YouTube.Channels.List channelRequest = youTube.channels().list("contentDetails");
+        channelRequest.setId(channelId);
+        channelRequest.setKey(apiKeys.get(currentKeyIndex));
+
+        ChannelListResponse channelResult = channelRequest.execute();
+        List<Channel> channelsList = channelResult.getItems();
+        if (channelsList != null && !channelsList.isEmpty()) {
+            return channelsList.get(0).getContentDetails().getRelatedPlaylists().getUploads();
+        }
+        return null;
+    }
+
+    private void fetchAndProcessVideos(List<String> videoIds, String channelName) {
+        try {
+            YouTube.Videos.List videosRequest = youTube.videos().list("id,snippet,contentDetails,statistics");
+            videosRequest.setId(String.join(",", videoIds));
+            videosRequest.setKey(apiKeys.get(currentKeyIndex));
+
+            VideoListResponse videoResponse = videosRequest.execute();
+            List<Video> videos = videoResponse.getItems();
+
+            for (Video video : videos) {
+                String videoId = video.getId();
+                String title = video.getSnippet().getTitle();
+                String lowerTitle = title.toLowerCase();
+
+                if (isSongRelated(lowerTitle)) {
+                    Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
+                    if (!existingSongOpt.isPresent()) {
+                        // Determine classification
+                        String classification = determineClassification(video);
+                        if ("ignore".equals(classification)) {
+                            continue;
+                        }
+                        saveNewSong(video, channelName, classification);
+                    }
+                } else {
+                    logger.info("노래와 관련 없는 동영상 필터링: " + title);
+                }
+            }
+        } catch (GoogleJsonResponseException e) {
+            handleApiException(e, channelName, "Unknown");
+        } catch (IOException e) {
+            logger.severe("IOException while fetching video details - " + e.getMessage());
+        }
+    }
+
+    private String determineClassification(Video video) {
+        String title = video.getSnippet().getTitle();
+        String durationStr = video.getContentDetails().getDuration();
+        Duration videoDuration = Duration.parse(durationStr);
+
+        if (videoDuration.compareTo(Duration.ofMinutes(8)) > 0) {
+            return "ignore";
+        }
+        if (videoDuration.compareTo(Duration.ofMinutes(1)) <= 0 || title.toLowerCase().contains("short")) {
+            return "shorts";
+        }
+        return "videos";
+    }
+
+    private void saveNewSong(Video video, String channelName, String classification) {
+        VtuberSongsEntity song = new VtuberSongsEntity();
+        song.setChannelId(video.getSnippet().getChannelId());
+        song.setVideoId(video.getId());
+        song.setTitle(video.getSnippet().getTitle());
+        song.setPublishedAt(Instant.ofEpochMilli(video.getSnippet().getPublishedAt().getValue())
+                .atZone(ZoneId.systemDefault()).toLocalDateTime());
+        song.setAddedTime(LocalDateTime.now());
+        song.setUpdateDayTime(LocalDateTime.now());
+        song.setUpdateWeekTime(LocalDateTime.now());
+        song.setVtuberName(channelName);
+        song.setViewCount(video.getStatistics().getViewCount().longValue());
+        song.setViewsIncreaseDay(0L);
+        song.setViewsIncreaseWeek(0L);
+        song.setLastWeekViewCount(0L);
+        song.setStatus("new");
+        song.setClassification(classification);
+
+        vtuberSongsRepository.save(song);
+    }
+
+    private void fetchRecentSongsFromSearch(String channelId, String channelName, Instant publishedAfterInstant) {
+        String combinedQuery = "music|cover|original|official";
+        String pageToken = null;
+
+        do {
+            try {
+                YouTube.Search.List search = youTube.search().list("id,snippet");
+                search.setChannelId(channelId);
+                search.setQ(combinedQuery);
+                search.setType("video");
+                search.setOrder("date");
+                search.setFields("nextPageToken,items(id/videoId,snippet/title,snippet/publishedAt,snippet/channelId)");
+                search.setMaxResults(50L); // 최대 값으로 설정
+                search.setKey(apiKeys.get(currentKeyIndex));
+                search.setPageToken(pageToken);
+
+                // publishedAfter 파라미터를 설정하여 최근 3일 이내의 노래만 가져옴
+                search.setPublishedAfter(new com.google.api.client.util.DateTime(publishedAfterInstant.toEpochMilli()));
+
+                SearchListResponse searchResponse = search.execute();
+                List<SearchResult> searchResults = searchResponse.getItems();
+                handleSearchResults(searchResults, channelName);
+
+                pageToken = searchResponse.getNextPageToken();
+            } catch (IOException e) {
+                logger.severe("API 호출 중 오류 발생 - 채널명: " + channelName + ", 채널 ID: " + channelId + " - 오류 메시지: " + e.getMessage());
+                keyUsage.set(currentKeyIndex, false);
+                switchApiKey();
+            }
+        } while (pageToken != null);
+    }
+
+    private void handleSearchResults(List<SearchResult> searchResults, String channelName) {
+        List<String> videoIds = new ArrayList<>();
+        for (SearchResult result : searchResults) {
+            videoIds.add(result.getId().getVideoId());
+        }
+
+        try {
+            YouTube.Videos.List videosRequest = youTube.videos().list("id,snippet,contentDetails,statistics");
+            videosRequest.setId(String.join(",", videoIds));
+            videosRequest.setKey(apiKeys.get(currentKeyIndex));
+
+            VideoListResponse videoResponse = videosRequest.execute();
+            List<Video> videos = videoResponse.getItems();
+
+            for (Video video : videos) {
+                String videoId = video.getId();
+                String title = video.getSnippet().getTitle();
+                String lowerTitle = title.toLowerCase();
+
+                if (isSongRelated(lowerTitle)) {
+                    Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
+                    if (!existingSongOpt.isPresent()) {
+                        // Determine classification
+                        String classification = determineClassification(video);
+                        if ("ignore".equals(classification)) {
+                            continue;
+                        }
+                        saveNewSong(video, channelName, classification);
+                    }
+                } else {
+                    logger.info("노래와 관련 없는 동영상 필터링: " + title);
+                }
+            }
+        } catch (IOException e) {
+            logger.severe("Error fetching video details: " + e.getMessage());
+            switchApiKey();
+        }
+    }
+
+    // 제목에 노래 관련 키워드가 포함되어 있는지 확인하는 함수
+    private boolean isSongRelated(String title) {
+        // 제목에 SONG_KEYWORDS에 해당하는 단어가 포함되어 있는지 확인
+        return SONG_KEYWORDS.stream().anyMatch(title::contains);
+    }
+
+    private long fetchViewCount(String videoId) {
+        try {
+            YouTube.Videos.List request = youTube.videos().list("statistics");
+            request.setId(videoId);
+            request.setKey(apiKeys.get(currentKeyIndex));
+            var response = request.execute();
+            if (!response.getItems().isEmpty()) {
+                return response.getItems().get(0).getStatistics().getViewCount().longValue();  // Long 타입으로 반환
+            }
+        } catch (IOException e) {
+            logger.severe("Failed to fetch view counts: " + e.getMessage());
+            switchApiKey();
+        }
+        return 0;
+    }
+
+    private void switchApiKey() {
+        int initialKeyIndex = currentKeyIndex;
+        do {
+            currentKeyIndex = (currentKeyIndex + 1) % apiKeys.size();
+            if (keyUsage.get(currentKeyIndex)) {
+                logger.info("API 키 전환: " + apiKeys.get(currentKeyIndex));
+                return;  // 사용 가능한 API 키를 찾으면 바로 반환
+            }
+        } while (currentKeyIndex != initialKeyIndex); // 모든 키를 순환했는지 확인
+
+        // 모든 키가 할당량을 초과한 경우
+        logger.severe("모든 API 키의 할당량이 소진됨. 작업을 중단합니다.");
+        throw new RuntimeException("모든 API 키의 할당량이 소진되었습니다.");
+    }
+
+    private void resetKeyUsage() {
+        for (int i = 0; i < keyUsage.size(); i++) {
+            keyUsage.set(i, true); // 모든 키를 사용 가능하게 설정
+        }
+    }
+
+    private void handleApiException(GoogleJsonResponseException e, String channelName, String channelId) {
+        logger.severe("API 호출 중 오류 발생 - 채널명: " + channelName + ", 채널 ID: " + channelId + " - 오류 메시지: " + e.getMessage());
+        keyUsage.set(currentKeyIndex, false);
+        switchApiKey();
+    }
 }
