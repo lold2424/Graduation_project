@@ -21,10 +21,11 @@ public class VtuberService {
         this.vtuberSongsRepository = vtuberSongsRepository;
     }
 
-    public VtuberEntity createVtuber(String description) {
-        VtuberEntity newVtuber = new VtuberEntity();
-        newVtuber.setDescription(description);
-        return vtuberRepository.save(newVtuber); // DB에 저장
+    public VtuberEntity createVtuber(String description, String gender) {
+        VtuberEntity vtuberEntity = new VtuberEntity();
+        vtuberEntity.setDescription(description);
+        vtuberEntity.setGender(gender);
+        return vtuberRepository.save(vtuberEntity);
     }
 
     public Map<String, Object> searchVtubersAndSongs(String query, String channelId) {

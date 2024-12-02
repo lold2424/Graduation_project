@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
@@ -69,18 +68,14 @@ public class UploadVtuberService {
             "버츄얼 유튜버", "버튜버", "V-Youtuber", "버츄얼 유튜버"
     );
 
-    // 캐시: 처리된 채널 ID를 24시간 동안 저장
     private final Cache<String, Boolean> processedCache = CacheBuilder.newBuilder()
             .expireAfterWrite(24, TimeUnit.HOURS)
             .build();
 
-    // API 키 사용량 추적
     private final List<AtomicInteger> apiKeyUsage;
 
-    // RateLimiter: 초당 5개의 API 호출 허용
     private final RateLimiter rateLimiter = RateLimiter.create(5.0);
 
-    // API 사용량 모니터링 카운터
     private final Counter searchApiCounter;
     private final Counter channelsApiCounter;
 
@@ -101,18 +96,10 @@ public class UploadVtuberService {
         this.channelsApiCounter = meterRegistry.counter("youtube.api.channels");
     }
 
-    /**
-     * 현재 사용 중인 API 키를 반환합니다.
-     *
-     * @return 현재 API 키
-     */
     private String getCurrentApiKey() {
         return apiKeys.get(currentKeyIndex);
     }
 
-    /**
-     * API 키를 회전시킵니다. 모든 키를 순회한 경우 예외를 던집니다.
-     */
     private synchronized void rotateApiKey() {
         currentKeyIndex = (currentKeyIndex + 1) % apiKeys.size();
         if (currentKeyIndex == 0) {
@@ -122,9 +109,6 @@ public class UploadVtuberService {
         logger.warning("API 키를 다음 키로 전환했습니다: " + getCurrentApiKey());
     }
 
-    /**
-     * 현재 API 키의 사용량을 증가시키고, 할당량을 초과한 경우 키를 회전시킵니다.
-     */
     private void incrementApiKeyUsage() {
         apiKeyUsage.get(currentKeyIndex).incrementAndGet();
         if (apiKeyUsage.get(currentKeyIndex).get() >= MAX_QUOTA_PER_KEY) {
@@ -132,9 +116,6 @@ public class UploadVtuberService {
         }
     }
 
-    /**
-     * VTuber 채널을 검색하고 저장하며, 프로필 이미지가 없는 경우 업데이트하는 메서드입니다.
-     */
     public void fetchAndSaveVtuberChannels() {
         Set<String> exceptChannelIds = new HashSet<>(exceptVtuberRepository.findAllChannelIds());
         logger.info("제외된 채널 ID 목록: " + exceptChannelIds);
@@ -156,18 +137,18 @@ public class UploadVtuberService {
                 pagesFetched++;
 
                 try {
-                    rateLimiter.acquire(); // API 호출 전에 허가 획득
+                    rateLimiter.acquire();
 
                     YouTube.Search.List search = youTube.search().list("id,snippet");
                     search.setQ(query);
                     search.setType("channel");
                     search.setFields("nextPageToken,items(id/channelId,snippet/title,snippet/description)");
-                    search.setMaxResults(50L); // 최대 결과 수 설정
+                    search.setMaxResults(50L);
                     search.setKey(getCurrentApiKey());
                     search.setPageToken(pageToken);
 
                     incrementApiKeyUsage();
-                    searchApiCounter.increment(); // 검색 API 호출 카운터 증가
+                    searchApiCounter.increment();
 
                     SearchListResponse searchResponse = search.execute();
                     List<SearchResult> searchResultList = searchResponse.getItems();
@@ -182,7 +163,7 @@ public class UploadVtuberService {
                     logger.info("필터링된 채널 ID 목록: " + channelIds);
 
                     if (!channelIds.isEmpty()) {
-                        List<List<String>> partitions = partitionList(channelIds, 50); // 배치 크기 50으로 설정
+                        List<List<String>> partitions = partitionList(channelIds, 50);
                         for (List<String> partition : partitions) {
                             executor.submit(() -> {
                                 processChannels(partition, exceptChannelIds, processedChannelIds);
@@ -199,12 +180,11 @@ public class UploadVtuberService {
             } while (pageToken != null);
         }
 
-        // 새로운 채널 처리 후, 기존 채널 중 프로필 이미지가 없는 경우 업데이트
         updateExistingChannelsMissingImages(executor);
 
         executor.shutdown();
         try {
-            if (!executor.awaitTermination(2, TimeUnit.HOURS)) { // 기존 이미지 업데이트를 위해 시간 늘림
+            if (!executor.awaitTermination(2, TimeUnit.HOURS)) {
                 executor.shutdownNow();
                 logger.warning("작업이 시간 내에 완료되지 않아 강제 종료되었습니다.");
             }
@@ -215,11 +195,6 @@ public class UploadVtuberService {
         }
     }
 
-    /**
-     * 기존 채널 중 프로필 이미지가 없는 경우 업데이트하는 메서드입니다.
-     *
-     * @param executor 사용 중인 ThreadPoolExecutor
-     */
     private void updateExistingChannelsMissingImages(ThreadPoolExecutor executor) {
         List<VtuberEntity> vtubersWithMissingImages = vtuberRepository.findByChannelImgIsNull();
         logger.info("프로필 이미지가 없는 VTuber 수: " + vtubersWithMissingImages.size());
@@ -238,16 +213,9 @@ public class UploadVtuberService {
         }
     }
 
-    /**
-     * 주어진 채널 ID 목록을 처리하여 VTuber 정보를 저장합니다.
-     *
-     * @param channelIds          처리할 채널 ID 목록
-     * @param exceptChannelIds    제외할 채널 ID 목록
-     * @param processedChannelIds 이미 처리된 채널 ID 목록
-     */
     private void processChannels(List<String> channelIds, Set<String> exceptChannelIds, Set<String> processedChannelIds) {
         try {
-            rateLimiter.acquire(); // API 호출 전에 허가 획득
+            rateLimiter.acquire();
 
             YouTube.Channels.List channelRequest = youTube.channels().list("snippet,statistics");
             channelRequest.setId(String.join(",", channelIds));
@@ -255,7 +223,7 @@ public class UploadVtuberService {
             channelRequest.setKey(getCurrentApiKey());
 
             incrementApiKeyUsage();
-            channelsApiCounter.increment(); // 채널 API 호출 카운터 증가
+            channelsApiCounter.increment();
 
             ChannelListResponse channelResponse = channelRequest.execute();
             List<Channel> channels = channelResponse.getItems();
@@ -289,13 +257,12 @@ public class UploadVtuberService {
                         vtuber.setSubscribers(channel.getStatistics().getSubscriberCount());
                         vtuber.setAddedTime(LocalDateTime.now());
 
-                        // 프로필 이미지 (썸네일 기본 사이즈) 저장
                         if (channel.getSnippet().getThumbnails() != null &&
                                 channel.getSnippet().getThumbnails().getDefault() != null) {
                             vtuber.setChannelImg(channel.getSnippet().getThumbnails().getDefault().getUrl());
                         }
 
-                        vtuber.setStatus("new"); // 새 VTuber의 status를 "new"로 설정
+                        vtuber.setStatus("new");
 
                         vtuberRepository.save(vtuber);
                         processedChannelIds.add(channelId);
@@ -311,12 +278,6 @@ public class UploadVtuberService {
         }
     }
 
-    /**
-     * 주어진 채널이 한국어 VTuber인지 확인합니다.
-     *
-     * @param channel 확인할 채널
-     * @return 한국어 VTuber 여부
-     */
     private boolean isKoreanVtuber(Channel channel) {
         String title = channel.getSnippet().getTitle();
         String description = channel.getSnippet().getDescription();
@@ -343,13 +304,11 @@ public class UploadVtuberService {
         logger.info("containsExcludeKeywordsInTitle: " + containsExcludeKeywordsInTitle);
         logger.info("containsExcludeKeywordsInDescription: " + containsExcludeKeywordsInDescription);
 
-        // 제외 단어가 포함되어 있고, 우선순위 키워드가 포함되어 있지 않으면 제외
         if ((containsExcludeKeywordsInTitle || containsExcludeKeywordsInDescription) && !containsPriorityKeyword) {
             logger.info("제외된 이유 - 제목/설명에 제외 키워드 포함: " + title);
             return false;
         }
 
-        // 한국어와 Vtuber 키워드가 포함되어 있거나 우선순위 키워드가 포함된 경우
         boolean result = (containsKoreanInTitle && containsVtuberInTitle) ||
                 (containsKoreanInDescription && containsVtuberInDescription) ||
                 containsPriorityKeyword;
@@ -358,13 +317,6 @@ public class UploadVtuberService {
         return result;
     }
 
-    /**
-     * 리스트를 지정된 크기로 분할합니다.
-     *
-     * @param list 분할할 리스트
-     * @param size 분할 크기
-     * @return 분할된 리스트의 리스트
-     */
     private List<List<String>> partitionList(List<String> list, int size) {
         List<List<String>> partitions = new ArrayList<>();
         for (int i = 0; i < list.size(); i += size) {
@@ -373,15 +325,9 @@ public class UploadVtuberService {
         return partitions;
     }
 
-    /**
-     * 채널의 프로필 이미지를 가져옵니다.
-     *
-     * @param channelId 채널 ID
-     * @return 프로필 이미지 URL
-     */
     private String fetchChannelProfileImage(String channelId) {
         try {
-            rateLimiter.acquire(); // API 호출 전에 허가 획득
+            rateLimiter.acquire();
 
             YouTube.Channels.List channelsList = youTube.channels().list("snippet");
             channelsList.setId(channelId);
@@ -389,7 +335,7 @@ public class UploadVtuberService {
             channelsList.setFields("items(snippet/thumbnails/default/url)");
 
             incrementApiKeyUsage();
-            channelsApiCounter.increment(); // 채널 API 호출 카운터 증가
+            channelsApiCounter.increment();
 
             ChannelListResponse response = channelsList.execute();
             List<Channel> channels = response.getItems();
@@ -403,21 +349,9 @@ public class UploadVtuberService {
         return null;
     }
 
-    /**
-     * 스케줄링된 작업으로 VTuber 채널을 검색하고 저장하며, 프로필 이미지가 없는 경우 업데이트합니다.
-     * 매일 오전 11시 15분에 실행됩니다.
-     */
-    @Scheduled(cron = "0 54 12 * * ?", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 0 0 * * ?", zone = "Asia/Seoul")
     public void scheduledFetchAndSaveVtuberChannels() {
         fetchAndSaveVtuberChannels();
     }
 
-    /*
-    public VtuberEntity createVtuber(String description) {
-        VtuberEntity vtuberEntity = new VtuberEntity();
-        vtuberEntity.setDescription(description);
-        vtuberEntity.setAddedTime(LocalDateTime.now());
-        return vtuberRepository.save(vtuberEntity);
-    }
-    */
 }

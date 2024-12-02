@@ -15,18 +15,16 @@ import java.util.Map;
 @RequestMapping("/api/v1/vtubers")
 public class VtuberController {
 
-    private final SongService songService;
+    private final VtuberService vtuberService;
 
-    public VtuberController(SongService songService) {
-        this.songService = songService;
+    public VtuberController(VtuberService vtuberService) {
+        this.vtuberService = vtuberService;
     }
-    @Autowired
-    private VtuberService vtuberService;
 
 
     @PostMapping
     public ResponseEntity<VtuberEntity> createVtuber(@RequestBody VtuberRequest vtuberRequest) {
-        VtuberEntity vtuberEntity = vtuberService.createVtuber(vtuberRequest.getDescription());
+        VtuberEntity vtuberEntity = vtuberService.createVtuber(vtuberRequest.getDescription(), vtuberRequest.getGender());
         return new ResponseEntity<>(vtuberEntity, HttpStatus.CREATED);
     }
 

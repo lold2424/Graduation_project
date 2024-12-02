@@ -29,7 +29,6 @@ public class UpdateVtuberSongsService {
     private int currentKeyIndex = 0;
     private static final Logger logger = Logger.getLogger(UpdateVtuberSongsService.class.getName());
 
-    // 노래 관련 키워드 리스트 (제목만 필터링)
     private static final List<String> SONG_KEYWORDS = List.of("music", "song", "cover", "original", "official", "mv", "뮤직", "노래", "커버");
 
     public UpdateVtuberSongsService(
@@ -42,26 +41,22 @@ public class UpdateVtuberSongsService {
         this.vtuberSongsRepository = vtuberSongsRepository;
         this.apiKeys = new ArrayList<>(apiKeys);
         this.keyUsage = new ArrayList<>(apiKeys.size());
-        // keyUsage 리스트의 크기와 값 초기화
         for (int i = 0; i < apiKeys.size(); i++) {
-            this.keyUsage.add(true); // 모든 키를 처음엔 사용 가능으로 m설정
+            this.keyUsage.add(true);
         }
     }
 
-    @Scheduled(cron = "0 01 15 * * ?", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Seoul")
     public void fetchVtuberSongs() {
         List<VtuberEntity> newVtubers = vtuberRepository.findByStatus("new");
         List<VtuberEntity> existingVtubers = vtuberRepository.findByStatus("existing");
 
-        // "new" 상태의 버튜버에 대해 모든 노래를 가져옴
         for (VtuberEntity vtuber : newVtubers) {
             fetchAllSongsFromPlaylist(vtuber.getChannelId(), vtuber.getName());
-            // 모든 노래를 가져온 후 상태를 "existing"으로 변경
             vtuber.setStatus("existing");
             vtuberRepository.save(vtuber);
         }
 
-        // "existing" 상태의 버튜버에 대해 최근 3일 이내의 노래를 가져옴
         Instant threeDaysAgoInstant = LocalDateTime.now().minusDays(3).toInstant(ZoneOffset.UTC);
         for (VtuberEntity vtuber : existingVtubers) {
             fetchRecentSongsFromSearch(vtuber.getChannelId(), vtuber.getName(), threeDaysAgoInstant);
@@ -70,7 +65,6 @@ public class UpdateVtuberSongsService {
 
     @Scheduled(cron = "30 2 0 * * MON", zone = "Asia/Seoul")
     public void updateSongStatusToExisting() {
-        // "new" 상태인 모든 곡을 찾아서 "existing"으로 상태 업데이트
         List<VtuberSongsEntity> newSongs = vtuberSongsRepository.findByStatus("new");
 
         newSongs.forEach(song -> {
@@ -85,15 +79,14 @@ public class UpdateVtuberSongsService {
     @Scheduled(cron = "0 0 0 * * ?", zone = "Asia/Seoul")
     public void updateViewCounts() {
         resetKeyUsage(); // API 키 사용 상태를 리셋
-        List<VtuberSongsEntity> songs = vtuberSongsRepository.findAll(); // 모든 곡 조회
+        List<VtuberSongsEntity> songs = vtuberSongsRepository.findAll();
         for (VtuberSongsEntity song : songs) {
-            long newViewCount = fetchViewCount(song.getVideoId()); // 유튜브 API로 조회수 가져오기
+            long newViewCount = fetchViewCount(song.getVideoId());
 
-            // 조회수가 0인 경우 삭제된 동영상으로 간주하고 DB에서 삭제
             if (newViewCount == 0) {
                 logger.info("삭제된 동영상 감지: " + song.getTitle() + " (" + song.getVideoId() + ")");
-                vtuberSongsRepository.delete(song); // DB에서 삭제
-                continue; // 다음 곡으로 이동
+                vtuberSongsRepository.delete(song);
+                continue;
             }
 
             if (newViewCount > 0) {
@@ -183,7 +176,6 @@ public class UpdateVtuberSongsService {
                 if (isSongRelated(lowerTitle)) {
                     Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
                     if (!existingSongOpt.isPresent()) {
-                        // Determine classification
                         String classification = determineClassification(video);
                         if ("ignore".equals(classification)) {
                             continue;
@@ -248,7 +240,7 @@ public class UpdateVtuberSongsService {
                 search.setType("video");
                 search.setOrder("date");
                 search.setFields("nextPageToken,items(id/videoId,snippet/title,snippet/publishedAt,snippet/channelId)");
-                search.setMaxResults(50L); // 최대 값으로 설정
+                search.setMaxResults(50L);
                 search.setKey(apiKeys.get(currentKeyIndex));
                 search.setPageToken(pageToken);
 
@@ -309,7 +301,6 @@ public class UpdateVtuberSongsService {
 
     // 제목에 노래 관련 키워드가 포함되어 있는지 확인하는 함수
     private boolean isSongRelated(String title) {
-        // 제목에 SONG_KEYWORDS에 해당하는 단어가 포함되어 있는지 확인
         return SONG_KEYWORDS.stream().anyMatch(title::contains);
     }
 
@@ -320,7 +311,7 @@ public class UpdateVtuberSongsService {
             request.setKey(apiKeys.get(currentKeyIndex));
             var response = request.execute();
             if (!response.getItems().isEmpty()) {
-                return response.getItems().get(0).getStatistics().getViewCount().longValue();  // Long 타입으로 반환
+                return response.getItems().get(0).getStatistics().getViewCount().longValue();
             }
         } catch (IOException e) {
             logger.severe("Failed to fetch view counts: " + e.getMessage());
@@ -335,18 +326,17 @@ public class UpdateVtuberSongsService {
             currentKeyIndex = (currentKeyIndex + 1) % apiKeys.size();
             if (keyUsage.get(currentKeyIndex)) {
                 logger.info("API 키 전환: " + apiKeys.get(currentKeyIndex));
-                return;  // 사용 가능한 API 키를 찾으면 바로 반환
+                return;
             }
-        } while (currentKeyIndex != initialKeyIndex); // 모든 키를 순환했는지 확인
+        } while (currentKeyIndex != initialKeyIndex);
 
-        // 모든 키가 할당량을 초과한 경우
         logger.severe("모든 API 키의 할당량이 소진됨. 작업을 중단합니다.");
         throw new RuntimeException("모든 API 키의 할당량이 소진되었습니다.");
     }
 
     private void resetKeyUsage() {
         for (int i = 0; i < keyUsage.size(); i++) {
-            keyUsage.set(i, true); // 모든 키를 사용 가능하게 설정
+            keyUsage.set(i, true);
         }
     }
 
