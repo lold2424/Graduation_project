@@ -8,20 +8,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/random-songs")
-public class    RandomSongsController {
+public class RandomSongsController {
 
-    private final SongService SongService;
+    private final SongService songService;
 
-    public RandomSongsController(SongService SongService) {
-        this.SongService = SongService;
+    public RandomSongsController(SongService songService) {
+        this.songService = songService;
     }
 
     @GetMapping("/random")
-    public List<VtuberSongsEntity> getRandomVideoSongs(@RequestParam(defaultValue = "6") int limit) {
-        return SongService.getRandomVideoSongs(limit);
+    public List<VtuberSongsEntity> getRandomVideoSongs(
+            @RequestParam(value = "limit", defaultValue = "6") int limit,
+            @RequestParam(value = "gender", required = false, defaultValue = "all") String gender) {
+        return songService.getRandomVideoSongs(limit, gender);
     }
+
     @GetMapping("/random-shorts")
-    public List<VtuberSongsEntity> getRandomShortsSongs(@RequestParam(defaultValue = "6") int limit) {
-        return SongService.getRandomShortsSongs(limit);
+    public List<VtuberSongsEntity> getRandomShortsSongs(
+            @RequestParam(value = "limit", defaultValue = "6") int limit,
+            @RequestParam(value = "gender", required = false, defaultValue = "all") String gender) {
+        return songService.getRandomShortsSongs(limit, gender);
     }
 }
