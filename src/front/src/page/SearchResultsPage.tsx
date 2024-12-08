@@ -49,11 +49,11 @@ const SearchResultsPage: React.FC = () => {
 
         const nextPage = songPage + 1;
         const newSongs = searchResults.songs.slice(visibleSongs.length, visibleSongs.length + 10);
-        setVisibleSongs([...visibleSongs, ...newSongs]); // 10개씩 추가로 보이기
+        setVisibleSongs([...visibleSongs, ...newSongs]);
         setSongPage(nextPage);
 
         if (newSongs.length < 10) {
-            setHasMoreSongs(false); // 더 이상 노래가 없으면 더보기 버튼 숨김
+            setHasMoreSongs(false);
         }
     };
 
@@ -61,7 +61,6 @@ const SearchResultsPage: React.FC = () => {
         <div className="search-results-page">
             <h1>검색 결과</h1>
 
-            {/* 버튜버 채널 결과 */}
             {searchResults?.vtubers && searchResults.vtubers.length > 0 && (
                 <div>
                     <h2>버튜버 채널</h2>
@@ -82,7 +81,6 @@ const SearchResultsPage: React.FC = () => {
                 </div>
             )}
 
-            {/* 노래 결과 */}
             <div>
                 <div className="video-grid">
                     {visibleSongs.length > 0 ? (
@@ -94,7 +92,6 @@ const SearchResultsPage: React.FC = () => {
                     )}
                 </div>
 
-                {/* 더보기 버튼 */}
                 {hasMoreSongs && (
                     <button onClick={loadMoreSongs}>더보기</button>
                 )}

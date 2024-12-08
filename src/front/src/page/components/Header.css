@@ -83,3 +83,28 @@
     object-fit: contain;
     vertical-align: middle;
 }
+
+.gender-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.gender-btn {
+    padding: 6px 12px;
+    border: 1px solid #007bff;
+    background-color: #ffffff;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.gender-btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.gender-btn.active {
+    background-color: #007bff;
+    color: #ffffff;
+}

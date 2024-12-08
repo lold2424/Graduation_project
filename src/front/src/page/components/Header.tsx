@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
+import { GenderContext } from './GenderContext';
 
 interface HeaderProps {
     onSearch?: (searchTerm: string, genderFilter: string) => void;
@@ -8,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [genderFilter, setGenderFilter] = useState('all');
+    const { genderFilter, setGenderFilter } = useContext(GenderContext);
     const navigate = useNavigate();
 
     const handleSearch = () => {
@@ -21,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         if (onSearch) {
             onSearch(searchTerm, genderFilter);
         } else {
-            navigate(`/search?query=${searchTerm}&gender=${genderFilter}`);
+            navigate(`/search?query=${encodeURIComponent(searchTerm)}&gender=${genderFilter}`);
         }
     };
 
@@ -36,6 +37,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     };
 
     const handleGenderFilter = (filter: string) => {
+        console.log('Setting gender filter to:', filter);
         setGenderFilter(filter);
     };
 
@@ -45,13 +47,12 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 
     return (
         <header className="header">
-            {/* 로고 이미지 */}
             <img
                 src="/images/V-Song.png"
                 alt="V-Song Logo"
                 className="logo"
                 onClick={handleGoHome}
-                style={{ cursor: 'pointer', height: '40px' }} // 로고 클릭 시 홈으로 이동
+                style={{ cursor: 'pointer', height: '40px' }}
             />
 
             <div className="search-bar">
@@ -69,6 +70,27 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
                 )}
                 <button type="submit" className="search-btn" onClick={handleSearch}>
                     <img src="/images/SearchBar.png" alt="Search" />
+                </button>
+            </div>
+
+            <div className="gender-filters">
+                <button
+                    className={`gender-btn ${genderFilter === 'male' ? 'active' : ''}`}
+                    onClick={() => handleGenderFilter('male')}
+                >
+                    남성
+                </button>
+                <button
+                    className={`gender-btn ${genderFilter === 'female' ? 'active' : ''}`}
+                    onClick={() => handleGenderFilter('female')}
+                >
+                    여성
+                </button>
+                <button
+                    className={`gender-btn ${genderFilter === 'all' ? 'active' : ''}`}
+                    onClick={() => handleGenderFilter('all')}
+                >
+                    전체
                 </button>
             </div>
         </header>

@@ -6,25 +6,24 @@ import MainPage from './page/MainPage';
 import SearchResultsPage from './page/SearchResultsPage';
 import WeeklyChart from './page/components/WeeklyChart';
 import axios from 'axios';
+import { GenderProvider } from './page/components/GenderContext';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const App: React.FC = () => {
     const [top10WeeklySongs, setTop10WeeklySongs] = useState<any[]>([]);
     const [top10DailySongs, setTop10DailySongs] = useState<any[]>([]);
-    const [top10WeeklyShorts, setTop10WeeklyShorts] = useState<any[]>([]);  // 주간 쇼츠 데이터 추가
+    const [top10WeeklyShorts, setTop10WeeklyShorts] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [chartType, setChartType] = useState<'weekly' | 'daily' | 'shorts'>('weekly'); // chartType 상태를 'weekly'로 초기화
+    const [chartType, setChartType] = useState<'weekly' | 'daily' | 'shorts'>('weekly');
 
-    // 타입 정의
     interface MainApiResponse {
         top10WeeklySongs: any[];
         top10DailySongs: any[];
         top10WeeklyShorts: any[];
     }
 
-// 수정된 useEffect
     useEffect(() => {
         axios.get<MainApiResponse>(`${apiUrl}/main`)
             .then((response) => {
@@ -42,57 +41,59 @@ const App: React.FC = () => {
 
     return (
         <Router>
-            <div className="app-container">
-                <Header />
-                <div className="main-layout">
-                    <div className="content">
-                        <Routes>
-                            <Route path="/" element={<MainPage />} />
-                            <Route path="/search" element={<SearchResultsPage />} />
-                        </Routes>
-                    </div>
-                    <div className="sidebar">
-                        <div className="button-group">
-                            <button
-                                onClick={() => setChartType('weekly')}
-                                className={chartType === 'weekly' ? 'active' : ''}
-                            >
-                                주간
-                            </button>
-                            <button
-                                onClick={() => setChartType('daily')}
-                                className={chartType === 'daily' ? 'active' : ''}
-                            >
-                                일간
-                            </button>
-                            <button
-                                onClick={() => setChartType('shorts')}
-                                className={chartType === 'shorts' ? 'active' : ''}
-                            >
-                                쇼츠
-                            </button>
+            <GenderProvider>
+                <div className="app-container">
+                    <Header />
+                    <div className="main-layout">
+                        <div className="content">
+                            <Routes>
+                                <Route path="/" element={<MainPage />} />
+                                <Route path="/search" element={<SearchResultsPage />} />
+                            </Routes>
                         </div>
+                        <div className="sidebar">
+                            <div className="button-group">
+                                <button
+                                    onClick={() => setChartType('weekly')}
+                                    className={chartType === 'weekly' ? 'active' : ''}
+                                >
+                                    주간
+                                </button>
+                                <button
+                                    onClick={() => setChartType('daily')}
+                                    className={chartType === 'daily' ? 'active' : ''}
+                                >
+                                    일간
+                                </button>
+                                <button
+                                    onClick={() => setChartType('shorts')}
+                                    className={chartType === 'shorts' ? 'active' : ''}
+                                >
+                                    쇼츠
+                                </button>
+                            </div>
 
-                        {isLoading ? (
-                            <p>차트를 불러오는 중입니다...</p>
-                        ) : error ? (
-                            <p>{error}</p>
-                        ) : (
-                            <>
-                                {chartType === 'weekly' && (
-                                    <WeeklyChart top10WeeklySongs={top10WeeklySongs} title="주간 인기 노래" />
-                                )}
-                                {chartType === 'daily' && (
-                                    <WeeklyChart top10WeeklySongs={top10DailySongs} title="일간 인기 노래" />
-                                )}
-                                {chartType === 'shorts' && (
-                                    <WeeklyChart top10WeeklySongs={top10WeeklyShorts} title="주간 인기 쇼츠" />
-                                )}
-                            </>
-                        )}
+                            {isLoading ? (
+                                <p>차트를 불러오는 중입니다...</p>
+                            ) : error ? (
+                                <p>{error}</p>
+                            ) : (
+                                <>
+                                    {chartType === 'weekly' && (
+                                        <WeeklyChart top10WeeklySongs={top10WeeklySongs} title="주간 인기 노래" />
+                                    )}
+                                    {chartType === 'daily' && (
+                                        <WeeklyChart top10WeeklySongs={top10DailySongs} title="일간 인기 노래" />
+                                    )}
+                                    {chartType === 'shorts' && (
+                                        <WeeklyChart top10WeeklySongs={top10WeeklyShorts} title="주간 인기 쇼츠" />
+                                    )}
+                                </>
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </GenderProvider>
         </Router>
     );
 };
