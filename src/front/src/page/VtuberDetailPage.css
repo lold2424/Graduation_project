@@ -1,5 +1,6 @@
 .vtuber-detail-page {
     display: flex;
+    flex-direction: column; /* 수직 배치로 변경 */
     justify-content: center;
     align-items: center;
     margin: 20px;
@@ -16,6 +17,7 @@
     padding: 20px;
     max-width: 800px;
     width: 100%;
+    margin-bottom: 30px; /* 상세 정보와 노래 섹션 사이 간격 추가 */
 }
 
 .profile-section {
@@ -63,4 +65,63 @@
 
 .back-button {
     background-color: #555;
+}
+
+.songs-section {
+    width: 100%; /* 노래 섹션도 페이지 너비에 맞게 확장 */
+    max-width: 800px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.songs-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.songs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.song-thumbnail {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.song-watch-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
