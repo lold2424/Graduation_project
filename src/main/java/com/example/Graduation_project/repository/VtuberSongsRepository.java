@@ -51,4 +51,5 @@ public interface VtuberSongsRepository extends JpaRepository<VtuberSongsEntity, 
     @Query("SELECT COUNT(v) FROM VtuberSongsEntity v WHERE v.channelId = :channelId")
     int countByChannelId(@Param("channelId") String channelId);
 
+    List<VtuberSongsEntity> findByChannelId(String channelId);
 }

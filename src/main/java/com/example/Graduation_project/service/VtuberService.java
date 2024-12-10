@@ -80,4 +80,7 @@ public class VtuberService {
         return details;
     }
 
+    public List<VtuberSongsEntity> getSongsByChannelId(String channelId) {
+        return vtuberSongsRepository.findByChannelId(channelId);
+    }
 }
