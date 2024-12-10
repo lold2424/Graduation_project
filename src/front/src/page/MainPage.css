@@ -1,46 +1,51 @@
 /* 전체 레이아웃을 8:2 비율로 나누는 스타일 */
 .main-layout {
     display: flex;
-    overflow: hidden; /* 콘텐츠가 넘치지 않도록 처리 */
+    background-color: #222831; /* 메인 배경색 변경 */
+    color: #EEEEEE; /* 텍스트 색상 */
+    overflow: hidden;
 }
 
 /* 왼쪽 8 부분 - 메인 콘텐츠 */
 .content {
     flex: 8;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #222831;
     overflow-y: auto;
 }
 
 /* 오른쪽 2 부분 - 주간 인기 차트 */
 .sidebar {
     flex: 2;
-    background-color: #fff;
-    border-left: 1px solid #ddd;
+    background-color: #222831; /* 사이드바 배경색 변경 */
+    border-left: 1px solid #00ADB5;
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* 차트가 많아질 경우 스크롤 */
+    overflow-y: auto;
 }
 
 /* 비디오 카드 그리드 레이아웃 */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 최소 200px 크기의 비디오 카드 */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
 }
 
 .video-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #393E46;
+    border: 1px solid #00ADB5;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    color: #EEEEEE;
 }
 
 .video-card:hover {
     transform: scale(1.05);
+    background-color: #00ADB5;
+    color: #222831;
 }
 
 .video-card img {
@@ -52,5 +57,5 @@
 .video-card h3 {
     font-size: 14px;
     margin: 10px 0;
-    color: #333;
+    color: #EEEEEE;
 }

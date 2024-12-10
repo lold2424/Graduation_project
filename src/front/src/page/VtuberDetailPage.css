@@ -1,23 +1,25 @@
 .vtuber-detail-page {
     display: flex;
-    flex-direction: column; /* 수직 배치로 변경 */
+    flex-direction: column; /* 수직 배치 */
     justify-content: center;
     align-items: center;
     margin: 20px;
+    background-color: #222831; /* 페이지 배경 */
+    color: #EEEEEE; /* 기본 텍스트 색상 */
 }
 
 .detail-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #1f1f1f;
-    color: white;
+    background-color: #393E46; /* 상세 카드 배경색 */
+    color: #EEEEEE; /* 텍스트 색상 */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     max-width: 800px;
     width: 100%;
-    margin-bottom: 30px; /* 상세 정보와 노래 섹션 사이 간격 추가 */
+    margin-bottom: 30px; /* 상세 정보와 노래 섹션 간격 */
 }
 
 .profile-section {
@@ -30,7 +32,7 @@
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #fff;
+    border: 2px solid #00ADB5; /* 강조색상 */
 }
 
 .info-section {
@@ -55,30 +57,45 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    color: white;
+    color: #EEEEEE; /* 버튼 텍스트 색상 */
 }
 
+/* 유튜브로 이동 버튼 */
 .youtube-button {
-    background-color: #ff0000;
-    margin-right: 10px;
+    background-color: #FF0000; /* 붉은색 배경 */
+    margin-right: 15px; /* 뒤로 가기 버튼과 간격 추가 */
+    transition: background-color 0.2s, color 0.2s;
 }
 
-.back-button {
-    background-color: #555;
+.youtube-button:hover {
+    background-color: #CC0000; /* 호버 시 더 어두운 붉은색 */
 }
+
+/* 뒤로 가기 버튼 */
+.back-button {
+    background-color: #555555; /* 어두운 회색 배경 */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+    background-color: #777777; /* 호버 시 밝은 회색 */
+}
+
 
 .songs-section {
-    width: 100%; /* 노래 섹션도 페이지 너비에 맞게 확장 */
+    width: 100%; /* 노래 섹션 너비 */
     max-width: 800px;
     padding: 20px;
-    background: #f9f9f9;
+    background-color: #393E46; /* 섹션 배경 */
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: #EEEEEE; /* 섹션 텍스트 색상 */
 }
 
 .songs-section h2 {
     font-size: 20px;
     margin-bottom: 20px;
+    color: #00ADB5; /* 섹션 제목 강조 색상 */
 }
 
 .songs-list {
@@ -92,8 +109,8 @@
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #222831; /* 노래 카드 배경 */
+    border: 1px solid #393E46; /* 카드 테두리 색상 */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -114,14 +131,19 @@
     margin: 0;
     font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: #EEEEEE;
 }
 
 .song-watch-button {
-    background-color: #007bff;
-    color: white;
+    background-color: #00ADB5; /* 버튼 강조 색상 */
+    color: #EEEEEE;
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.song-watch-button:hover {
+    background-color: #EEEEEE;
+    color: #393E46; /* 버튼 호버 효과 */
 }
