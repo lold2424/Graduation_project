@@ -47,4 +47,8 @@ public interface VtuberSongsRepository extends JpaRepository<VtuberSongsEntity, 
 
     @Query(value = "SELECT * FROM vtuber_songs WHERE vtuber_name = :vtuberName ORDER BY view_count DESC", nativeQuery = true)
     List<VtuberSongsEntity> findAllByVtuberNameOrderByViewCountDesc(@Param("vtuberName") String vtuberName);
+
+    @Query("SELECT COUNT(v) FROM VtuberSongsEntity v WHERE v.channelId = :channelId")
+    int countByChannelId(@Param("channelId") String channelId);
+
 }

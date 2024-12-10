@@ -39,4 +39,13 @@ public class VtuberController {
         return ResponseEntity.ok(searchResults);
     }
 
+    @GetMapping("/{channelId}/details")
+    public ResponseEntity<Map<String, Object>> getVtuberDetails(@PathVariable String channelId) {
+        Map<String, Object> details = vtuberService.getVtuberDetails(channelId);
+        if (details.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(details);
+    }
+
 }

@@ -59,4 +59,25 @@ public class VtuberService {
 
         return result;
     }
+
+    public Map<String, Object> getVtuberDetails(String channelId) {
+        Optional<VtuberEntity> vtuber = vtuberRepository.findByChannelId(channelId);
+        if (vtuber.isEmpty()) {
+            return Collections.emptyMap();
+        }
+
+        VtuberEntity vtuberEntity = vtuber.get();
+        int songCount = vtuberSongsRepository.countByChannelId(channelId);
+
+        // 채널 세부 정보 포함
+        Map<String, Object> details = new HashMap<>();
+        details.put("name", vtuberEntity.getName());
+        details.put("subscribers", vtuberEntity.getSubscribers());
+        details.put("gender", vtuberEntity.getGender());
+        details.put("songCount", songCount);
+        details.put("channelImg", vtuberEntity.getChannelImg()); // 채널 이미지 추가
+
+        return details;
+    }
+
 }
