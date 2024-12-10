@@ -59,7 +59,7 @@ const SearchResultsPage: React.FC = () => {
 
     return (
         <div className="search-results-page">
-            <h1>검색 결과</h1>
+            <h1>‘{queryValue}’에 대한 검색 결과입니다.</h1>
 
             {searchResults?.vtubers && searchResults.vtubers.length > 0 && (
                 <div>
@@ -71,8 +71,8 @@ const SearchResultsPage: React.FC = () => {
                                 <div className="vtuber-info">
                                     <h3>{vtuber.name}</h3>
                                     <p>구독자 수: {vtuber.subscribers}</p>
-                                    <button onClick={() => window.open(`https://www.youtube.com/channel/${vtuber.channelId}`, '_blank')}>
-                                        채널로 이동
+                                    <button onClick={() => navigate(`/vtuber/${vtuber.channelId}`)}>
+                                        상세 정보 보기
                                     </button>
                                 </div>
                             </div>

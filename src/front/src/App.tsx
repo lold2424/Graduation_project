@@ -7,6 +7,7 @@ import SearchResultsPage from './page/SearchResultsPage';
 import WeeklyChart from './page/components/WeeklyChart';
 import axios from 'axios';
 import { GenderProvider } from './page/components/GenderContext';
+import VtuberDetailPage from "./page/VtuberDetailPage";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
                             <Routes>
                                 <Route path="/" element={<MainPage />} />
                                 <Route path="/search" element={<SearchResultsPage />} />
+                                <Route path="/vtuber/:channelId" element={<VtuberDetailPage />} />
                             </Routes>
                         </div>
                         <div className="sidebar">

@@ -39,6 +39,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ song }) => {
         setIsModalOpen(false); // 모달 닫기
     };
 
+    const handleVtuberNameClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        event.stopPropagation(); // 카드 클릭 이벤트 방지
+        navigate(`/search?query=${encodeURIComponent(song.vtuberName)}`);
+    };
+
     return (
         <>
             <div
@@ -55,7 +60,10 @@ const VideoCard: React.FC<VideoCardProps> = ({ song }) => {
                 ) : (
                     <div className="hover-content">
                         <h3 style={{ cursor: 'pointer' }}>{song.title}</h3>
-                        <p style={{ color: 'blue' }}>
+                        <p
+                            style={{ color: 'blue', cursor: 'pointer' }}
+                            onClick={handleVtuberNameClick} // 채널명 클릭 이벤트
+                        >
                             채널명: {song.vtuberName}
                         </p>
                         <p>조회수: {song.viewCount.toLocaleString()}</p>

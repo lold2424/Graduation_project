@@ -1,0 +1,66 @@
+.vtuber-detail-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1f1f1f;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.profile-section {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.info-section {
+    flex: 1;
+}
+
+.vtuber-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.vtuber-info {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.action-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.youtube-button {
+    background-color: #ff0000;
+    margin-right: 10px;
+}
+
+.back-button {
+    background-color: #555;
+}
