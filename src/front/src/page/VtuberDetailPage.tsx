@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './VtuberDetailPage.css';
-import VideoModal from './components/VideoModal'; // 비디오 모달 컴포넌트 임포트
+import VideoModal from './components/VideoModal';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -26,14 +26,13 @@ const VtuberDetailPage: React.FC = () => {
     const { channelId } = useParams<{ channelId: string }>();
     const [vtuberDetail, setVtuberDetail] = useState<VtuberDetail | null>(null);
     const [songs, setSongs] = useState<Song[]>([]);
-    const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null); // 모달 상태 관리
+    const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (channelId) {
-            // Fetch vtuber details
             axios
-                .get(`${apiUrl}/api/v1/vtubers/${channelId}/details`)
+                .get<VtuberDetail>(`${apiUrl}/api/v1/vtubers/${channelId}/details`)
                 .then((response) => {
                     setVtuberDetail(response.data);
                 })
@@ -41,9 +40,8 @@ const VtuberDetailPage: React.FC = () => {
                     console.error('버튜버 상세 정보를 가져오는 중 오류 발생:', error);
                 });
 
-            // Fetch songs for the vtuber
             axios
-                .get(`${apiUrl}/api/v1/vtubers/${channelId}/songs`)
+                .get<Song[]>(`${apiUrl}/api/v1/vtubers/${channelId}/songs`)
                 .then((response) => {
                     setSongs(response.data);
                 })
@@ -58,11 +56,11 @@ const VtuberDetailPage: React.FC = () => {
     }
 
     const handleOpenModal = (videoId: string) => {
-        setSelectedVideoId(videoId); // 비디오 ID 설정
+        setSelectedVideoId(videoId);
     };
 
     const handleCloseModal = () => {
-        setSelectedVideoId(null); // 모달 닫기
+        setSelectedVideoId(null);
     };
 
     const genderText =
@@ -114,7 +112,7 @@ const VtuberDetailPage: React.FC = () => {
                                     <p>조회수: {song.viewCount.toLocaleString()}</p>
                                     <p>게시일: {new Date(song.publishedAt).toLocaleDateString()}</p>
                                     <button
-                                        onClick={() => handleOpenModal(song.videoId)} // 모달 열기
+                                        onClick={() => handleOpenModal(song.videoId)}
                                         className="action-button song-watch-button"
                                     >
                                         노래 보기
