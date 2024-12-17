@@ -111,15 +111,18 @@ public class UpdateVtuberSongsService {
     }
 
     private void fetchAllSongsFromPlaylist(String channelId, String channelName) {
+        logger.info("채널 [" + channelName + "]에서 모든 노래를 가져옵니다. 채널 ID: " + channelId);
         try {
             String uploadsPlaylistId = getUploadsPlaylistId(channelId);
             if (uploadsPlaylistId == null) {
                 logger.severe("Uploads playlist not found for channel ID: " + channelId);
                 return;
             }
+            logger.info("업로드 플레이리스트 ID: " + uploadsPlaylistId);
 
             String pageToken = null;
             do {
+                logger.info("플레이리스트 페이지 조회 중...");
                 YouTube.PlaylistItems.List playlistItemsRequest = youTube.playlistItems()
                         .list("contentDetails,snippet");
                 playlistItemsRequest.setPlaylistId(uploadsPlaylistId);
@@ -130,6 +133,8 @@ public class UpdateVtuberSongsService {
                 PlaylistItemListResponse playlistItemResult = playlistItemsRequest.execute();
                 List<PlaylistItem> playlistItems = playlistItemResult.getItems();
 
+                logger.info("조회된 동영상 수: " + playlistItems.size());
+
                 List<String> videoIds = new ArrayList<>();
                 for (PlaylistItem item : playlistItems) {
                     videoIds.add(item.getContentDetails().getVideoId());
@@ -139,6 +144,7 @@ public class UpdateVtuberSongsService {
 
                 pageToken = playlistItemResult.getNextPageToken();
             } while (pageToken != null);
+            logger.info("플레이리스트 노래 조회 완료. 채널: " + channelName);
         } catch (GoogleJsonResponseException e) {
             handleApiException(e, channelName, channelId);
         } catch (IOException e) {
@@ -160,6 +166,7 @@ public class UpdateVtuberSongsService {
     }
 
     private void fetchAndProcessVideos(List<String> videoIds, String channelName) {
+        logger.info("동영상 상세 정보를 가져옵니다. 비디오 ID 수: " + videoIds.size());
         try {
             YouTube.Videos.List videosRequest = youTube.videos().list("id,snippet,contentDetails,statistics");
             videosRequest.setId(String.join(",", videoIds));
@@ -174,22 +181,25 @@ public class UpdateVtuberSongsService {
                 String lowerTitle = title.toLowerCase();
 
                 if (isSongRelated(lowerTitle)) {
+                    logger.info("노래로 판단된 동영상: " + title + " (" + videoId + ")");
                     Optional<VtuberSongsEntity> existingSongOpt = vtuberSongsRepository.findByVideoId(videoId);
                     if (!existingSongOpt.isPresent()) {
                         String classification = determineClassification(video);
                         if ("ignore".equals(classification)) {
+                            logger.info("무시된 동영상 (길이 초과): " + title);
                             continue;
                         }
                         saveNewSong(video, channelName, classification);
+                    } else {
+                        logger.info("이미 존재하는 노래: " + title);
                     }
                 } else {
                     logger.info("노래와 관련 없는 동영상 필터링: " + title);
                 }
             }
-        } catch (GoogleJsonResponseException e) {
-            handleApiException(e, channelName, "Unknown");
         } catch (IOException e) {
             logger.severe("IOException while fetching video details - " + e.getMessage());
+            switchApiKey();
         }
     }
 
@@ -208,6 +218,7 @@ public class UpdateVtuberSongsService {
     }
 
     private void saveNewSong(Video video, String channelName, String classification) {
+        logger.info("새 노래 저장: " + video.getSnippet().getTitle() + " | 분류: " + classification);
         VtuberSongsEntity song = new VtuberSongsEntity();
         song.setChannelId(video.getSnippet().getChannelId());
         song.setVideoId(video.getId());
@@ -226,14 +237,17 @@ public class UpdateVtuberSongsService {
         song.setClassification(classification);
 
         vtuberSongsRepository.save(song);
+        logger.info("노래 저장 완료: " + song.getTitle());
     }
 
     private void fetchRecentSongsFromSearch(String channelId, String channelName, Instant publishedAfterInstant) {
+        logger.info("채널 [" + channelName + "]에서 최근 노래를 검색합니다. 채널 ID: " + channelId);
         String combinedQuery = "music|cover|original|official";
         String pageToken = null;
 
         do {
             try {
+                logger.info("노래 검색 중... publishedAfter: " + publishedAfterInstant);
                 YouTube.Search.List search = youTube.search().list("id,snippet");
                 search.setChannelId(channelId);
                 search.setQ(combinedQuery);
@@ -243,12 +257,12 @@ public class UpdateVtuberSongsService {
                 search.setMaxResults(50L);
                 search.setKey(apiKeys.get(currentKeyIndex));
                 search.setPageToken(pageToken);
-
-                // publishedAfter 파라미터를 설정하여 최근 3일 이내의 노래만 가져옴
                 search.setPublishedAfter(new com.google.api.client.util.DateTime(publishedAfterInstant.toEpochMilli()));
 
                 SearchListResponse searchResponse = search.execute();
                 List<SearchResult> searchResults = searchResponse.getItems();
+
+                logger.info("검색된 동영상 수: " + searchResults.size());
                 handleSearchResults(searchResults, channelName);
 
                 pageToken = searchResponse.getNextPageToken();
@@ -258,6 +272,7 @@ public class UpdateVtuberSongsService {
                 switchApiKey();
             }
         } while (pageToken != null);
+        logger.info("최근 노래 검색 완료. 채널: " + channelName);
     }
 
     private void handleSearchResults(List<SearchResult> searchResults, String channelName) {

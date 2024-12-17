@@ -117,6 +117,7 @@ public class UploadVtuberService {
     }
 
     public void fetchAndSaveVtuberChannels() {
+        logger.info("=== fetchAndSaveVtuberChannels 시작 ===");
         Set<String> exceptChannelIds = new HashSet<>(exceptVtuberRepository.findAllChannelIds());
         logger.info("제외된 채널 ID 목록: " + exceptChannelIds);
 
@@ -126,6 +127,7 @@ public class UploadVtuberService {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
 
         for (String query : queries) {
+            logger.info("쿼리 실행: " + query);
             String pageToken = null;
             int pagesFetched = 0;
 
@@ -138,6 +140,7 @@ public class UploadVtuberService {
 
                 try {
                     rateLimiter.acquire();
+                    logger.info("YouTube Search API 호출 시작 (쿼리: " + query + ", 페이지: " + pagesFetched + ")");
 
                     YouTube.Search.List search = youTube.search().list("id,snippet");
                     search.setQ(query);
@@ -152,6 +155,7 @@ public class UploadVtuberService {
 
                     SearchListResponse searchResponse = search.execute();
                     List<SearchResult> searchResultList = searchResponse.getItems();
+                    logger.info("API 응답 수신: " + searchResultList.size() + " 개 채널");
 
                     List<String> channelIds = searchResultList.stream()
                             .map(result -> result.getId().getChannelId())
@@ -193,6 +197,7 @@ public class UploadVtuberService {
             logger.severe("스레드 인터럽트 발생: " + e.getMessage());
             Thread.currentThread().interrupt();
         }
+        logger.info("=== fetchAndSaveVtuberChannels 종료 ===");
     }
 
     private void updateExistingChannelsMissingImages(ThreadPoolExecutor executor) {
@@ -214,6 +219,8 @@ public class UploadVtuberService {
     }
 
     private void processChannels(List<String> channelIds, Set<String> exceptChannelIds, Set<String> processedChannelIds) {
+        logger.info("processChannels 시작 - 채널 ID 개수: " + channelIds.size());
+
         try {
             rateLimiter.acquire();
 
@@ -276,6 +283,7 @@ public class UploadVtuberService {
             logger.severe("API 호출 중 오류 발생: " + e.getMessage());
             rotateApiKey();
         }
+        logger.info("processChannels 종료");
     }
 
     private boolean isKoreanVtuber(Channel channel) {
