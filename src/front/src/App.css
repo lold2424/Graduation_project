@@ -47,22 +47,22 @@
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 20px;
-  border: 2px solid #007bff;
+  border: 2px solid #393E46;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  color: #007bff;
-  background-color: #fff;
+  color: #00ADB5;
+  background-color: #393E46;
   outline: none;
 }
 
 .button-group button.active {
   color: #fff;
-  background-color: #007bff;
+  background-color: #00ADB5;
 }
 
 .button-group button:hover {
-  background-color: #0056b3;
+  background-color: #00ADB5;
   color: #fff;
-  border-color: #0056b3;
+  border-color: #00ADB5;
 }
