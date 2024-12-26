@@ -48,19 +48,30 @@ public class UpdateVtuberSongsService {
 
     @Scheduled(cron = "0 5 0 * * ?", zone = "Asia/Seoul")
     public void fetchVtuberSongs() {
+        logger.info("=== fetchVtuberSongs 실행 시작 ===");
+
         List<VtuberEntity> newVtubers = vtuberRepository.findByStatus("new");
         List<VtuberEntity> existingVtubers = vtuberRepository.findByStatus("existing");
 
+        logger.info("조회된 new Vtubers 수: " + newVtubers.size());
+        logger.info("조회된 existing Vtubers 수: " + existingVtubers.size());
+
         for (VtuberEntity vtuber : newVtubers) {
+            logger.info("새로운 Vtuber 처리 시작: " + vtuber.getName());
             fetchAllSongsFromPlaylist(vtuber.getChannelId(), vtuber.getName());
             vtuber.setStatus("existing");
             vtuberRepository.save(vtuber);
+            logger.info("새로운 Vtuber 처리 완료: " + vtuber.getName());
         }
 
         Instant threeDaysAgoInstant = LocalDateTime.now().minusDays(3).toInstant(ZoneOffset.UTC);
         for (VtuberEntity vtuber : existingVtubers) {
+            logger.info("기존 Vtuber 최근 노래 검색 시작: " + vtuber.getName());
             fetchRecentSongsFromSearch(vtuber.getChannelId(), vtuber.getName(), threeDaysAgoInstant);
+            logger.info("기존 Vtuber 최근 노래 검색 완료: " + vtuber.getName());
         }
+
+        logger.info("=== fetchVtuberSongs 실행 종료 ===");
     }
 
     @Scheduled(cron = "30 2 0 * * MON", zone = "Asia/Seoul")
