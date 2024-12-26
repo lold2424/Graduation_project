@@ -2,6 +2,7 @@ package com.example.Graduation_project.repository;
 
 import com.example.Graduation_project.entity.VtuberSongsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -52,4 +53,8 @@ public interface VtuberSongsRepository extends JpaRepository<VtuberSongsEntity, 
     int countByChannelId(@Param("channelId") String channelId);
 
     List<VtuberSongsEntity> findByChannelId(String channelId);
+
+    @Modifying
+    @Query("DELETE FROM VtuberSongsEntity v WHERE v.channelId = :channelId")
+    void deleteByChannelId(@Param("channelId") String channelId);
 }

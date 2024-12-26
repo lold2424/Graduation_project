@@ -11,6 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface VtuberRepository extends JpaRepository<VtuberEntity, Long> {
+
+    void deleteByChannelId(String channelId);
+
     Optional<VtuberEntity> findByChannelId(String channelId);
 
     @Query("SELECT v.channelId FROM VtuberEntity v WHERE v.gender = :gender")

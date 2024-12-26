@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -82,5 +83,14 @@ public class VtuberService {
 
     public List<VtuberSongsEntity> getSongsByChannelId(String channelId) {
         return vtuberSongsRepository.findByChannelId(channelId);
+    }
+
+    @Transactional
+    public void deleteVtuberAndRelatedSongs(String channelId) {
+        vtuberSongsRepository.deleteByChannelId(channelId);
+        logger.info("vtuber_songs 테이블에서 채널 ID {} 관련 데이터 삭제 완료", channelId);
+
+        vtuberRepository.deleteByChannelId(channelId);
+        logger.info("vtubers 테이블에서 채널 ID {} 삭제 완료", channelId);
     }
 }
